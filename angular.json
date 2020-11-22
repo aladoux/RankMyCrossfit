@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "../communauteCrossfit/node_modules/bootstrap/dist/css/bootstrap.css",
               "src/styles.scss"
             ],
             "scripts": []
