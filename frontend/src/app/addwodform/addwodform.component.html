@@ -16,20 +16,34 @@
       </tr>
       <tr *ngFor="let exercise of exercises().controls; let i=index" [formGroupName]="i">
         <td>
-            Exercise :
-            <input type="text" formControlName="qty" class="form-control">
+            Exercise Name:
+            <input type="text" formControlName="exoName" class="form-control">
         </td>
         <td>
-            Price:
-            <input type="text" formControlName="price" class="form-control">
+            Weight (kg):
+            <input type="text" formControlName="weight" class="form-control">
+        </td>
+        <td>
+          Number of rep:
+          <input type="text" formControlName="nbOfRep" class="form-control">
+        </td>
+        <td>
+          Time:
+          <input type="text" formControlName="time" class="form-control">
+        </td>
+        <td>
+          Number of Kcal:
+          <input type="text" formControlName="kcal" class="form-control">
+        </td>
+        <td>
+          Distance (Km):
+          <input type="text" formControlName="distance" class="form-control">
         </td>
         <td>
             <button (click)="removeExercise(i)" class="btn btn-danger">Remove</button>
         </td>
       </tr>
     </table>
-
-    <button type="submit" class="btn btn-success">Submit</button>
 
   </form>
 

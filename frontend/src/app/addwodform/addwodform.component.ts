@@ -36,8 +36,12 @@ export class AddWodFormComponent implements OnInit{
 
   newExercise(): FormGroup {
     return this.fb.group({
-      qty: '',
-      price: '',
+      exoName: '',
+      weight: '',
+      nbOfRep: '',
+      time: '',
+      kcal: '',
+      distance: '',
     })
   }
 
