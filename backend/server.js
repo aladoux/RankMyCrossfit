@@ -11,7 +11,9 @@ const router = express.Router();
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost:27017/');
+
+
+mongoose.connect('mongodb://localhost:27017/RankMyCrossfit');
 
 const connection = mongoose.connection;
 

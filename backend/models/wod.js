@@ -1,16 +1,15 @@
-import mongoose, { Schema } from 'mongoose';
+import mongoose from 'mongoose';
 
 
-const Scheme = mongoose.Schema;
+const Schema = mongoose.Schema;
 
 let Wod = new Schema({
-    name: {
+   name: {
         type: String
     },
-    exercises: {
-        type: Array
-    }
-    
+   exercises: {
+       type: Array
+   }
 });
 
 export default mongoose.model('Wod', Wod);
