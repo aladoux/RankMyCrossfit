@@ -16,11 +16,13 @@ import { MatTableModule } from '@angular/material/table';
 import {MatDividerModule} from '@angular/material/divider';
 import {HttpClientModule} from '@angular/common/http';
 import { WodService} from './wod.service';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FilterPipePipe } from './filter-pipe.pipe';
 
 const appRoutes: Routes = [
   {path: 'wods' , component: ListewodComponent},
-  {path: 'wods/addWod' , component: AddWodFormComponent},
+  {path: 'wods/add' , component: AddWodFormComponent},
   {path: 'auth' , component: AuthComponent},
   {path: 'accueil' , component: PrincipalViewComponent},
   {path: '' , component: PrincipalViewComponent}
@@ -35,6 +37,7 @@ const appRoutes: Routes = [
     FooterComponent,
     AuthComponent,
     PrincipalViewComponent,
+    FilterPipePipe
   ],
   imports: [
     BrowserModule,

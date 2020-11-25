@@ -1,7 +1,10 @@
-import { Component,Input, OnInit } from '@angular/core';
+import { Component,Input, OnInit, enableProdMode } from '@angular/core';
 import {WodService} from '../wod.service'
 import {Router} from '@angular/router'
 import {Wod} from '../wod.model';
+
+
+import {Exercise} from '../exercise.model';
 
 
 
@@ -12,8 +15,10 @@ import {Wod} from '../wod.model';
 })
 export class ListewodComponent implements OnInit {
 
+
   wods: Wod[];
-  displayedColumns = ['name', 'exercises'];
+  displayedColumns = ['name'];
+  wodname = "";
 
   constructor(private wodService: WodService, private router: Router) { }
 
@@ -41,5 +46,15 @@ export class ListewodComponent implements OnInit {
     });
   }
 
+  Search(){
+    if(this.wodname != ""){
+      this.wods = this.wods.filter(res =>{
+        return res.name.toLocaleLowerCase().match(this.wodname.toLocaleLowerCase());
+      })
+    }
+    else if(this.wodname == ""){
+      this.ngOnInit();
+    }
 
+  }
 }

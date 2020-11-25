@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms'
+import { Router } from '@angular/router';
+import { FormGroup, FormControl, FormArray, FormBuilder, Validators } from '@angular/forms'
+import {WodService} from '../wod.service';
 
 
 @Component({
@@ -8,9 +10,6 @@ import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms'
   templateUrl: './addwodform.component.html'
 })
 export class AddWodFormComponent implements OnInit{
-  onAddWod(){
-    alert('Wod added');
-  }
 
   onBack(){
 
@@ -22,10 +21,10 @@ export class AddWodFormComponent implements OnInit{
 
   productForm: FormGroup;
 
-  constructor(private fb:FormBuilder) {
+  constructor(private fb:FormBuilder, private wodService: WodService, private router: Router) {
 
     this.productForm = this.fb.group({
-      name: '',
+      name: ['', Validators.required],
       exercises: this.fb.array([]) ,
     });
   }
@@ -36,7 +35,7 @@ export class AddWodFormComponent implements OnInit{
 
   newExercise(): FormGroup {
     return this.fb.group({
-      exoName: '',
+      exoName: ['', Validators.required],
       weight: '',
       nbOfRep: '',
       time: '',
@@ -53,7 +52,10 @@ export class AddWodFormComponent implements OnInit{
     this.exercises().removeAt(i);
   }
 
-  onSubmit() {
+  onAddWod() {
+    this.wodService.addWod(this.productForm.value.name, this.productForm.value.exercises).subscribe(() => {
+      this.router.navigate(['/wods']);
+    });
     console.log(this.productForm.value);
   }
 }

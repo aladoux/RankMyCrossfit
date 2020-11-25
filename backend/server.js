@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 
 
 
-mongoose.connect('mongodb://localhost:27017/RankMyCrossfit');
+mongoose.connect('mongodb+srv://admin:projetWeb@wods.qqmxg.mongodb.net/RankMyCrossfit?retryWrites=true&w=majority');
 
 const connection = mongoose.connection;
 
