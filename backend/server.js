@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 
 import Wod from './models/wod';
+import Weightlifting from './models/weightlifting';
 
 const app = express();
 const router = express.Router();
@@ -19,6 +20,39 @@ const connection = mongoose.connection;
 
 connection.once('open', () => {
     console.log('MongoDB database connection established successfully!');
+});
+
+router.route('/weightliftings').get((req, res) => {
+    Weightlifting.find((err, weightliftings) => {
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.json(weightliftings);
+        }
+    })
+})
+
+router.route('/weightliftings/:id').get((req, res) => {
+    Weightlifting.findById(req.params.id, (err, weightlifting) => {
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.json(weightlifting);
+        }
+    });
+});
+
+router.route('/weightliftings/add').post((req, res) => {
+    let weightlifting = new Weightlifting(req.body);
+    weightlifting.save()
+        .then(weightlifting => {
+            res.status(200).json({'weightlifting': 'Added successfully'});
+        })
+        .catch(err => {
+            res.status(400).send('Failed to create a new record');
+        });
 });
 
 router.route('/wods').get((req, res) => {

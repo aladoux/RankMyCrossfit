@@ -1,7 +1,8 @@
 import { Component,Input, OnInit, enableProdMode } from '@angular/core';
-import {WodService} from '../wod.service'
+import {WodService} from '../services/wod.service'
 import {Router} from '@angular/router'
 import {Wod} from '../wod.model';
+
 
 
 import {Exercise} from '../exercise.model';

@@ -1,0 +1,21 @@
+<div class="container">
+
+  <h1>Weightlifting</h1>
+
+  <form [formGroup]="productForm" >
+
+    <p>
+      <label for="name">Weightlifting Name:</label>
+      <input type="text" id="name" name="name" formControlName="name" class="form-control">
+    </p>
+
+  </form>
+
+  <br/>
+  {{this.productForm.value | json}}
+</div>
+
+<button class="btn btn-success" (click)="onAddWeightlifting()">Add Weightlifting Movement</button>
+<button class="btn btn-error" (click)="onBack()">Cancel</button>
+
+

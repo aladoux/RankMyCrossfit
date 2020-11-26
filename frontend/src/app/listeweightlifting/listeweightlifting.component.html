@@ -1,0 +1,22 @@
+<div>
+  <button mat-raised-button="primary" routerLink="/weightliftings/add">Add a Weightlifting movement</button>
+  <br><br>
+  <mat-divider></mat-divider>
+  <br>
+  <div class="content" role="main">
+    <div class="card">
+      <div class="form-group">
+        <label for="search-text">Search Text</label>
+        <input type="text" class="form-control" id="search-text" aria-describedby="search-text"
+          [(ngModel)]="weightliftingname" placeholder="Enter a weightlifting movement's name" (input)="Search()" autofocus/>
+      </div>
+      <ul class="list-group list-group-flush">
+        <!-- results of ngFor is passed to appFilter with argument searchText -->
+        <td class="list-group-item" *ngFor="let weightlifting of weightliftings">
+          {{weightlifting.name}}
+        </td>
+      </ul>
+    </div>
+  </div>
+</div>
+

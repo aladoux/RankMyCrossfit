@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import {CommonModule} from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,12 +16,17 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import {MatDividerModule} from '@angular/material/divider';
 import {HttpClientModule} from '@angular/common/http';
-import { WodService} from './wod.service';
+import { WodService} from './services/wod.service';
+import {WeightliftingService} from './services/weightlifting.service';
+import {AddWeightliftingFormComponent} from './addweightliftingform/addweightliftingform.component';
+
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FilterPipePipe } from './filter-pipe.pipe';
+import { ListeweightliftingComponent } from './listeweightlifting/listeweightlifting.component';
 
 const appRoutes: Routes = [
+  {path: 'weightliftings' , component: ListeweightliftingComponent},
+  {path: 'weightliftings/add' , component: AddWeightliftingFormComponent},
   {path: 'wods' , component: ListewodComponent},
   {path: 'wods/add' , component: AddWodFormComponent},
   {path: 'auth' , component: AuthComponent},
@@ -33,14 +39,16 @@ const appRoutes: Routes = [
     AppComponent,
     MenuComponent,
     AddWodFormComponent,
+    AddWeightliftingFormComponent,
     ListewodComponent,
     FooterComponent,
     AuthComponent,
     PrincipalViewComponent,
-    FilterPipePipe
+    ListeweightliftingComponent,
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     FormsModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
@@ -52,7 +60,7 @@ const appRoutes: Routes = [
     MatDividerModule,
     BrowserAnimationsModule,
   ],
-  providers: [AuthService, WodService],
+  providers: [AuthService, WodService, WeightliftingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

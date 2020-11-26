@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, FormArray, FormBuilder, Validators } from '@angular/forms'
-import {WodService} from '../wod.service';
+import {WodService} from '../services/wod.service';
 
 
 @Component({
