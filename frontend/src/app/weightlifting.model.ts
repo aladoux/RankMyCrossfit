@@ -1,6 +1,6 @@
 
 
 export interface Weightlifting {
-  id: String;
+  _id: String;
   name: String;
 }

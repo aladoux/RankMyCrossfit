@@ -8,7 +8,7 @@ import { MenuComponent } from './menu/menu.component';
 import { ListewodComponent } from './listewod/listewod.component';
 import { FooterComponent } from './footer/footer.component';
 import { AddWodFormComponent } from './addwodform/addwodform.component';
-import { AuthComponent } from './auth/auth.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 import { PrincipalViewComponent } from './principal-view/principal-view.component';
 import {RouterModule,Routes} from "@angular/router";
 import {AuthService} from "./services/auth.service";
@@ -19,6 +19,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { WodService} from './services/wod.service';
 import {WeightliftingService} from './services/weightlifting.service';
 import {AddWeightliftingFormComponent} from './addweightliftingform/addweightliftingform.component';
+import {WodDisplayComponent} from './woddisplay/woddisplay.component';
+import {WeightliftingDisplayComponent} from './weightliftingdisplay/weightliftingdisplay.component';
 
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -28,8 +30,10 @@ const appRoutes: Routes = [
   {path: 'weightliftings' , component: ListeweightliftingComponent},
   {path: 'weightliftings/add' , component: AddWeightliftingFormComponent},
   {path: 'wods' , component: ListewodComponent},
+  {path: 'wods/:id' , component: WodDisplayComponent, pathMatch: 'full'},
+  {path: 'weightliftings/:id' , component: WodDisplayComponent, pathMatch: 'full'},
   {path: 'wods/add' , component: AddWodFormComponent},
-  {path: 'auth' , component: AuthComponent},
+  {path: 'login' , component: LoginPageComponent},
   {path: 'accueil' , component: PrincipalViewComponent},
   {path: '' , component: PrincipalViewComponent}
 ];
@@ -38,12 +42,14 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     MenuComponent,
+    WodDisplayComponent,
     AddWodFormComponent,
     AddWeightliftingFormComponent,
     ListewodComponent,
     FooterComponent,
-    AuthComponent,
+    LoginPageComponent,
     PrincipalViewComponent,
+    WeightliftingDisplayComponent,
     ListeweightliftingComponent,
   ],
   imports: [

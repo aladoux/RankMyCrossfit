@@ -11,7 +11,7 @@ export class WeightliftingService {
   constructor(private http: HttpClient) { }
 
   getWeightliftings() {
-    return this.http.get(`${this.uri}/weightliftings`);
+    return this.http.get(`${this.uri}/rankmycrossfit/weightliftings`);
   }
 
   getWeightliftingById(id) {

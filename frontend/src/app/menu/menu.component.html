@@ -1,4 +1,5 @@
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="./menu.component.scss">
 
 <nav id="menuPrincipal" class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="collapse navbar-collapse">
@@ -8,7 +9,7 @@
           <a class="nav-link nav-item" routerLink="accueil" title="Accueil">Accueil</a>
         </li>
         <li routerLink="active" class="nav-item">
-          <a class="nav-link" routerLink="wods" title="Wods">Wods</a>
+          <a class="nav-link" routerLink="wods" title="Wods" >Wods</a>
         </li>
         <li routerLink="active" class="nav-item">
           <a class="nav-link" routerLink="weightliftings" title="Weightlifting">Weightlifting</a>
@@ -16,8 +17,8 @@
 
 
         <li routerLink="active" id="compteBouton" >
-				 <a class="nav-link" href="index.php" title="mon compte" *ngIf="isAuth===true">{{pseudo}}</a>
-         <a class="nav-link" routerLink="auth" title="Se connecter" *ngIf="isAuth===false">Se connecter</a>
+				 <a class="nav-link" routerLink="" title="mon compte" *ngIf="isAuth===true">{{pseudo}}</a>
+         <a class="nav-link" routerLink="login" title="Log in" *ngIf="isAuth===false">Log in</a>
 				</li>
 
       </ul>

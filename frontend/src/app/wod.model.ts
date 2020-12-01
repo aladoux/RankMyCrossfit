@@ -1,7 +1,7 @@
 import { Exercise } from './exercise.model';
 
 export interface Wod {
-  id: String;
+  _id: String;
   name: String;
   exercises: Array<Exercise>;
 }

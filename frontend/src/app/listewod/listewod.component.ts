@@ -5,9 +5,6 @@ import {Wod} from '../wod.model';
 
 
 
-import {Exercise} from '../exercise.model';
-
-
 
 @Component({
   selector: 'app-listewod',
