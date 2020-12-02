@@ -11,9 +11,9 @@ let userSchema = new mongoose.Schema({
         unique: true,
         trim: true,
     },
-    username: {
+    pseudo: {
         type: String,
-        required: 'Username can\'t be empty',
+        required: 'Pseudo can\'t be empty',
         minLength: [4, 'Must be atleast 4 character long'],
         unique: true,
     },

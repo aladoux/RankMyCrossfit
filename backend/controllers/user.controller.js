@@ -5,7 +5,7 @@ const User = mongoose.model('User');
 module.exports.register = (req,res,next) => {
     var user = new User();
     user.email = req.body.email;
-    user.username = req.body.username;
+    user.pseudo = req.body.pseudo;
     user.firstName = req.body.firstName;
     user.lastName = req.body.lastName;
     user.password = req.body.password;
