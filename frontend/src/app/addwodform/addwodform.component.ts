@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, FormArray, FormBuilder, Validators } from '@angular/forms'
+import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms'
 import {WodService} from '../services/wod.service';
 
 
@@ -12,7 +12,7 @@ import {WodService} from '../services/wod.service';
 export class AddWodFormComponent implements OnInit{
 
   onBack(){
-
+    this.router.navigate(['/wods']);
   }
 
 

@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, FormArray, FormBuilder, Validators } from '@angular/forms'
+import { FormGroup, FormControl, FormArray, FormBuilder, Validators } from '@angular/forms';
 import {WeightliftingService} from '../services/weightlifting.service';
 
 
 @Component({
-  selector: 'app-addwodform',
+  selector: 'app-addweightliftingform',
   styleUrls: ['./addweightliftingform.component.scss'],
   templateUrl: './addweightliftingform.component.html'
 })
 export class AddWeightliftingFormComponent implements OnInit{
 
   onBack(){
-
+    this.router.navigate(['/weightliftings']);
   }
 
 
@@ -27,6 +27,7 @@ export class AddWeightliftingFormComponent implements OnInit{
       name: ['', Validators.required]
     });
   }
+
 
   onAddWeightlifting() {
     this.weightliftingService.addWeightlifting(this.productForm.value.name).subscribe(() => {

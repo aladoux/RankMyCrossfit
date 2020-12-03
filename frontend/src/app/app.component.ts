@@ -13,8 +13,6 @@ import { Component, OnInit } from '@angular/core';
 
 
 export class AppComponent {
-  isAuth = false;
-  idUtili = null;
-  pseudo = 'titi';
+
  constructor() {}
 }

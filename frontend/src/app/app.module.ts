@@ -12,18 +12,18 @@ import { FooterComponent } from './footer/footer.component';
 import { AddWodFormComponent } from './addwodform/addwodform.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { PrincipalViewComponent } from './principal-view/principal-view.component';
-import {RouterModule,Routes} from "@angular/router";
+import { RouterModule,Routes } from "@angular/router";
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
-import {MatDividerModule} from '@angular/material/divider';
-import {HttpClientModule} from '@angular/common/http';
-import { WodService} from './services/wod.service';
-import {WeightliftingService} from './services/weightlifting.service';
-import {AddWeightliftingFormComponent} from './addweightliftingform/addweightliftingform.component';
-import {WodDisplayComponent} from './woddisplay/woddisplay.component';
-import {WeightliftingDisplayComponent} from './weightliftingdisplay/weightliftingdisplay.component';
+import { MatDividerModule } from '@angular/material/divider';
+import { HttpClientModule } from '@angular/common/http';
+import { WodService } from './services/wod.service';
+import { WeightliftingService } from './services/weightlifting.service';
+import { AddWeightliftingFormComponent } from './addweightliftingform/addweightliftingform.component';
+import { WodDisplayComponent } from './woddisplay/woddisplay.component';
+import { WeightliftingDisplayComponent } from './weightliftingdisplay/weightliftingdisplay.component';
 
-
+import { ModifyWeightliftingFormComponent } from './modifyweightliftingform/modifyweightliftingform.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListeweightliftingComponent } from './listeweightlifting/listeweightlifting.component';
 import { SignUpComponent } from './user/sign-up/sign-up.component';
@@ -40,6 +40,7 @@ import {appRoutes} from './routes';
     WodDisplayComponent,
     AddWodFormComponent,
     AddWeightliftingFormComponent,
+    ModifyWeightliftingFormComponent,
     ListewodComponent,
     FooterComponent,
     LoginPageComponent,

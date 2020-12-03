@@ -1,11 +1,11 @@
 export class User {
-  firstName: String;
-  lastName: String;
-  pseudo: String;
-  email: String;
-  password: String;
-  sexe: String;
+  firstName: string;
+  lastName: string;
+  pseudo: string;
+  email: string;
+  password: string;
+  sexe: string;
   dateNaiss: Date;
-  nation: String;
-  type: String;
+  nation: string;
+  type: string;
 }

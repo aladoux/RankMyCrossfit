@@ -6,12 +6,12 @@ import {HttpClient} from '@angular/common/http';
 })
 export class WeightliftingService {
 
-  uri = 'http://localhost:4000';
+  uri = 'http://localhost:4000/rankmycrossfit';
 
   constructor(private http: HttpClient) { }
 
   getWeightliftings() {
-    return this.http.get(`${this.uri}/rankmycrossfit/weightliftings`);
+    return this.http.get(`${this.uri}/weightliftings`);
   }
 
   getWeightliftingById(id) {
@@ -27,12 +27,12 @@ export class WeightliftingService {
 
   updateWeightlifting(id, name) {
     const weightlifting = {
-      name: name,
+      name: name
     };
     return this.http.post(`${this.uri}/weightliftings/update/${id}`, weightlifting)
   }
 
   deleteWeightlifting(id){
-    return this.http.get(`${this.uri}/weightliftings/delete/${id}`);
+    return this.http.get(`${this.uri}/weightliftings/remove/${id}`);
   }
 }

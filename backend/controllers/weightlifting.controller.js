@@ -35,6 +35,22 @@ module.exports.add = (req, res) => {
         });
 }
 
+module.exports.update = (req, res) => {
+    Weightlifting.findById(req.params.id, (err, weightlifting) => {
+        if(!weightlifting){
+            return next(new Error('Could not load document'));
+        }
+        else{
+            weightlifting.name = req.body.name;
+            weightlifting.save().then(weightlifting => {
+                res.json('Update done');
+            }).catch(err => {
+                res.status(400).send('Update failed');
+            });
+        }
+    });
+}
+
 module.exports.remove = (req, res) => {
     Weightlifting.findByIdAndRemove({_id: req.params.id}, (err, weightlifting) => {
         if(err){

@@ -6,7 +6,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class WodService {
 
-  uri = 'http://localhost:4000';
+  uri = 'http://localhost:4000/rankmycrossfit';
 
   constructor(private http: HttpClient) { }
 
@@ -23,7 +23,7 @@ export class WodService {
       name: name,
       exercises: exercises
     };
-    return this.http.post(`${this.uri}/wods/add`, wod)
+    return this.http.post(`${this.uri}/wods/add`, wod);
   }
 
   updateWod(id, name, exercises) {
@@ -31,7 +31,7 @@ export class WodService {
       name: name,
       exercises: exercises
     };
-    return this.http.post(`${this.uri}/wods/update/${id}`, wod)
+    return this.http.post(`${this.uri}/wods/update/${id}`, wod);
   }
 
   deleteWod(id){

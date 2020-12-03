@@ -1,5 +1,5 @@
 <div>
-  <button class="btn btn-success" routerLink="/wods/add">Add a Wod</button>
+  <button class="btn btn-success" routerLink='/wods/add'>Add a Wod</button>
   <br><br>
   <mat-divider></mat-divider>
   <br>
@@ -14,8 +14,8 @@
         <!-- results of ngFor is passed to appFilter with argument searchText -->
         <td class="list-group-item" *ngFor="let wod of wods">
           <button class="btn" [routerLink]="['/wods',wod._id]">{{wod.name}}</button>
-          <button class="btn btn-warning" routerLink="/wods/:id/modify">Modify</button>
-          <button class="btn btn-danger" routerLink="/wods/:id/modify">Delete</button>
+          <button class="btn btn-warning" [routerLink]="['/wods/modify',wod._id]">Modify</button>
+          <button class="btn btn-danger" (click)="deleteWod(wod._id)">Delete</button>
         </td>
       </ul>
     </div>

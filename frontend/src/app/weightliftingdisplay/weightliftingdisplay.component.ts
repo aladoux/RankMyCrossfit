@@ -7,7 +7,7 @@ import {Weightlifting} from '../weightlifting.model';
 
 
 @Component({
-  selector: 'app-woddisplay',
+  selector: 'app-weightliftingdisplay',
   templateUrl: './weightliftingdisplay.component.html',
   styleUrls: ['./weightliftingdisplay.component.scss']
 })
@@ -18,8 +18,6 @@ export class WeightliftingDisplayComponent implements OnInit {
   constructor(private weightliftingService: WeightliftingService, private router: ActivatedRoute) { }
 
   ngOnInit(){
-
-
    this.router.params.subscribe(params => {
     this.id = params['id'];
     });
