@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { UserService } from '../../shared/user.service';
+import { UserService } from '../shared/user.service';
 
 
 @Component({
@@ -21,6 +21,7 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
+    console.log(form.value);
     this.userService.postUser(form.value).subscribe(
       res => {
         this.showSucessMessage = true;
@@ -40,7 +41,7 @@ export class SignUpComponent implements OnInit {
     this.userService.selectedUser = {
       firstName: '',
       lastName: '',
-      pseudo: '',
+      username: '',
       email: '',
       password: '',
       sexe: '',

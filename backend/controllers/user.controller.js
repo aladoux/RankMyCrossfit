@@ -7,7 +7,7 @@ const User = mongoose.model('User');
 module.exports.register = (req,res,next) => {
     var user = new User();
     user.email = req.body.email;
-    user.pseudo = req.body.pseudo;
+    user.username = req.body.username;
     user.firstName = req.body.firstName;
     user.lastName = req.body.lastName;
     user.password = req.body.password;
@@ -15,13 +15,15 @@ module.exports.register = (req,res,next) => {
     user.nation = req.body.nation;
     user.sexe = req.body.sexe;
     user.type = req.body.type;
+    console.log(user);
     user.save((err, doc) => {
         if(!err){
             res.send(doc);
         }
         else{
+            console.log(err);
             if (err.code == 11000){
-                res.status(422).send(['Duplicate email adrress found.']);
+                res.status(500).send(['Duplicate email adrress found.']);
             } 
             else{
                  return next(err);
@@ -56,7 +58,7 @@ module.exports.userProfile = (req, res, next) =>{
                     return res.status(404).json({ status: false, message: 'User record not found.'});
                 }
                 else{
-                    return res.status(200).json({ status: true, user: _.pick(user,['pseudo','email']) });
+                    return res.status(200).json({ status: true, user: _.pick(user,['username','email']) });
                 }
             }
         );

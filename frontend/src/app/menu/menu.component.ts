@@ -9,7 +9,7 @@ export class MenuComponent implements OnInit {
 
   constructor() { }
   @Input() isAuth: boolean;
-  @Input() pseudo: string;
+  @Input() username: string;
   ngOnInit(): void {
   }
 

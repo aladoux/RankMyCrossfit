@@ -11,7 +11,7 @@ export class UserService {
 selectedUser: User = {
   firstName: '',
   lastName: '',
-  pseudo: '',
+  username: '',
   email: '',
   password: '',
   sexe: '',

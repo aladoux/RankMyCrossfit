@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
-import { UserComponent } from './user/user.component';
-import { SignUpComponent } from './user/sign-up/sign-up.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 import { ListeweightliftingComponent } from './listeweightlifting/listeweightlifting.component';
 import { AddWeightliftingFormComponent } from './addweightliftingform/addweightliftingform.component';
 import { ListewodComponent } from './listewod/listewod.component';
@@ -9,14 +8,11 @@ import { AddWodFormComponent } from './addwodform/addwodform.component';
 import { PrincipalViewComponent } from './principal-view/principal-view.component';
 import { ModifyWeightliftingFormComponent } from './modifyweightliftingform/modifyweightliftingform.component';
 import { WeightliftingDisplayComponent } from './weightliftingdisplay/weightliftingdisplay.component';
+import { LoginPageComponent} from './login-page/login-page.component';
 
 export const appRoutes: Routes = [
   {
-      path: 'signup', component: UserComponent,
-      children: [{ path: '', component: SignUpComponent }]
-  },
-  {
-      path: '', redirectTo: '/signup', pathMatch: 'full'
+      path: 'signup', component: SignUpComponent,
   },
   {
     path: 'weightliftings/modify/:id' , component: ModifyWeightliftingFormComponent
@@ -31,21 +27,22 @@ export const appRoutes: Routes = [
     path: 'wods' , component: ListewodComponent
   },
   {
+    path: 'wods/add' , component: AddWodFormComponent
+  },
+  {
     path: 'wods/:id' , component: WodDisplayComponent, pathMatch: 'full'
   },
   {
     path: 'weightliftings/:id' , component: WeightliftingDisplayComponent, pathMatch: 'full'
   },
-  {
-    path: 'wods/add' , component: AddWodFormComponent
-  },
- /* {
-    path: 'login' , component: LoginPageComponent
-  },*/
+
   {
     path: 'accueil' , component: PrincipalViewComponent
   },
   {
     path: '' , component: PrincipalViewComponent
-  }
+  },
+  {
+    path: 'login' , component: LoginPageComponent
+  },
 ];

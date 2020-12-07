@@ -9,9 +9,9 @@ let userSchema = new mongoose.Schema({
         required: 'Email can\'t be empty',
         unique: true,
     },
-    pseudo: {
+    username: {
         type: String,
-        required: 'Pseudo can\'t be empty',
+        required: 'Username can\'t be empty',
         minLength: [4, 'Must be atleast 4 character long'],
         unique: true,
     },

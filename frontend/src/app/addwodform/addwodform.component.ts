@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms'
+import { FormGroup,FormControl, FormArray, FormBuilder, Validators } from '@angular/forms'
 import {WodService} from '../services/wod.service';
 
 
@@ -17,12 +17,12 @@ export class AddWodFormComponent implements OnInit{
 
 
   ngOnInit(): void {
+
   }
 
   productForm: FormGroup;
 
   constructor(private fb:FormBuilder, private wodService: WodService, private router: Router) {
-
     this.productForm = this.fb.group({
       name: ['', Validators.required],
       exercises: this.fb.array([]) ,

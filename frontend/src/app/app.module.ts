@@ -26,8 +26,7 @@ import { WeightliftingDisplayComponent } from './weightliftingdisplay/weightlift
 import { ModifyWeightliftingFormComponent } from './modifyweightliftingform/modifyweightliftingform.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListeweightliftingComponent } from './listeweightlifting/listeweightlifting.component';
-import { SignUpComponent } from './user/sign-up/sign-up.component';
-import { UserComponent } from './user/user.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 //routes
 import {appRoutes} from './routes';
@@ -48,7 +47,6 @@ import {appRoutes} from './routes';
     WeightliftingDisplayComponent,
     ListeweightliftingComponent,
     SignUpComponent,
-    UserComponent,
   ],
   imports: [
     BrowserModule,

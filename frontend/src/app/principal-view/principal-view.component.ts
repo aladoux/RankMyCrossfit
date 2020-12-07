@@ -9,12 +9,12 @@ export class PrincipalViewComponent implements OnInit {
 
   isAuth = false;
   idUtili = null;
-  pseudo = 'titi';
+  username = 'titi';
 
   constructor() { }
 
   ngOnInit(){
-  
+
   }
 
 }
