@@ -1,28 +1,21 @@
 <div class="container">
 
   <h1>Wod</h1>
+
   <form [formGroup]="productForm" >
+
     <p>
-      <label>Wod Name:</label>
-      <input [(ngModel)]="this.wod.name" type="text" id="name" name="name">
+      <label for="name">Wod Name:</label>
+      <input [(ngModel)]="this.wod.name" type="text" id="name" name="name" formControlName="name" class="form-control">
     </p>
 
-    <table id="tab" class="table">
-
-      <thead>
-        <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Distance (Km)</th>
-          <th scope="col">Kcal</th>
-          <th scope="col">Number of Rep</th>
-          <th scope="col">Time</th>
-          <th scope="col">Weight (Kg)</th>
-        </tr>
-      </thead>
-      <tbody>
-
-        <tr *ngFor="let exercise of exercises().controls; let i=index" [formGroupName]="i">
-          <td>
+    <table class="table" formArrayName="exercises">
+      <tr>
+        <th colspan="2">Add exercise:</th>
+        <th width="150px"><button type="button" (click)="addExercise()" class="btn btn-primary">Add More</button></th>
+      </tr>
+      <tr *ngFor="let exercise of exercises().controls; let i=index" [formGroupName]="i">
+        <td>
             Exercise Name:
             <input type="text" formControlName="exoName" class="form-control">
         </td>
@@ -46,23 +39,18 @@
           Distance (Km):
           <input type="text" formControlName="distance" class="form-control">
         </td>
-
+        <td>
             <button (click)="removeExercise(i)" class="btn btn-danger">Remove</button>
-        <!--</td>-->
-        </tr>
-        <tr>
-          <th colspan="2">Add exercise:</th>
-          <th width="150px"><button type="button" (click)="addExercise()" class="btn btn-primary">Add More</button></th>
-        </tr>
-      </tbody>
+        </td>
+      </tr>
     </table>
 
-</form>
+  </form>
+
   <br/>
 
 
 
 <button class="btn btn-success" (click)="onModifyWod()">Modify Wod</button>
 <button class="btn btn-danger" (click)="onBack()">Cancel</button>
-
 </div>

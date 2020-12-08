@@ -47,7 +47,7 @@ module.exports.remove = (req, res) => {
 }
 
 module.exports.update = (req, res) => {
-    Wods.findById(req.params.id, (err, wod) => {
+    Wod.findById(req.params.id, (err, wod) => {
         if(!wod){
             return next(new Error('Could not load document'));
         }

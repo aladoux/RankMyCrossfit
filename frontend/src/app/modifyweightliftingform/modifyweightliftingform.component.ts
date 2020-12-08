@@ -33,9 +33,8 @@ onBack(){
   constructor(private fb:FormBuilder, private weightliftingService: WeightliftingService,private route: Router, private router: ActivatedRoute) {
 
     this.productForm = this.fb.group({
-      name: ['', Validators.required]
+      name: ['', Validators.required],
     });
-    //this.productForm.setValue({name: this.weightlifting});
   }
 
 
@@ -51,10 +50,6 @@ onBack(){
         console.log(this.weightlifting);
         this.productForm.setValue({name: this.weightlifting.name});
       });
-  }
-
-  aff(){
-    console.log(this.productForm.value.name);
   }
 
   onModifyWeightlifting() {
