@@ -1,5 +1,43 @@
-<div>
+<div class="container">
 
 <h1>{{wod.name}}</h1>
+<br>
+<table id="tab" class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Distance (Km)</th>
+      <th scope="col">Kcal</th>
+      <th scope="col">Number of Rep</th>
+      <th scope="col">Time</th>
+      <th scope="col">Weight (Kg)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let exo of this.exercises;">
+      <td>
+        <label>{{exo.exoName}}</label>
+      </td>
+      <td>
+        <label> {{exo.distance}}</label>
+      </td>
+      <td>
+        <label> {{exo.kcal}}</label>
+      </td>
+      <td>
+        <label> {{exo.nbOfRep}}</label>
+      </td>
+      <td>
+        <label> {{exo.time}}</label>
+      </td>
+      <td>
+        <label> {{exo.weight}}</label>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
+<div id="classements" class="container">
+
+</div>
 </div>

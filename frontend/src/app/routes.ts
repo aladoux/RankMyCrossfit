@@ -9,6 +9,7 @@ import { PrincipalViewComponent } from './principal-view/principal-view.componen
 import { ModifyWeightliftingFormComponent } from './modifyweightliftingform/modifyweightliftingform.component';
 import { WeightliftingDisplayComponent } from './weightliftingdisplay/weightliftingdisplay.component';
 import { LoginPageComponent} from './login-page/login-page.component';
+import { ModifyWodFormComponent } from './modifywod/modifywodform.component';
 
 export const appRoutes: Routes = [
   {
@@ -35,7 +36,9 @@ export const appRoutes: Routes = [
   {
     path: 'weightliftings/:id' , component: WeightliftingDisplayComponent, pathMatch: 'full'
   },
-
+  {
+    path: 'wods/modify/:id' , component: ModifyWodFormComponent
+  },
   {
     path: 'accueil' , component: PrincipalViewComponent
   },

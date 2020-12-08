@@ -27,6 +27,7 @@ import { ModifyWeightliftingFormComponent } from './modifyweightliftingform/modi
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListeweightliftingComponent } from './listeweightlifting/listeweightlifting.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { ModifyWodFormComponent } from './modifywod/modifywodform.component';
 
 //routes
 import {appRoutes} from './routes';
@@ -47,6 +48,7 @@ import {appRoutes} from './routes';
     WeightliftingDisplayComponent,
     ListeweightliftingComponent,
     SignUpComponent,
+    ModifyWodFormComponent,
   ],
   imports: [
     BrowserModule,

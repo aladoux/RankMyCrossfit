@@ -1,5 +1,5 @@
 
-<html>
+
   <body>
   <div class="container">
     <div class="d-flex justify-content-center h-100">
@@ -50,11 +50,11 @@
 
             <div class="form-check-inline">
               <input class="form-check-input"  id="man" value="man" type="radio" #sexe="ngModel" [(ngModel)]="userService.selectedUser.sexe" name="sexe" checked>
-              <label class="form-check-label" for="man">Man</label>
+              <label id="manLabel" class="form-check-label" for="man">Man</label>
             </div>
             <div class="form-check-inline">
               <input class="form-check-input" id="woman" value="woman" type="radio" #sexe="ngModel" [(ngModel)]="userService.selectedUser.sexe" name="sexe">
-              <label class="form-check-label" for="woman">Woman</label>
+              <label id="womanLabel" class="form-check-label" for="woman">Woman</label>
             </div>
 
             <div class="input-group form-group" id="datepicker">
@@ -92,11 +92,10 @@
           <!-- Error message -->
           <div class="alert" *ngIf="serverErrorMessages">
             {{serverErrorMessages}}
-
+          </div>
       </div>
     </div>
   </div>
-  </div>
   </body>
-</html>
+
 

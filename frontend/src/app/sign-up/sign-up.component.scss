@@ -1,3 +1,11 @@
+#manLabel{
+  color: white;
+}
+
+#womanLabel{
+  color: white;
+}
+
 .validation-message{
   color:rgb(175, 32, 32)
 }
@@ -24,11 +32,20 @@ align-content: center;
 }
 
 .card{
-height: 370px;
+height: 390px;
 margin-top: auto;
 margin-bottom: auto;
 width: 400px;
 background-color: rgba(0,0,0,0.5) !important;
+}
+
+.card-body{
+  width: 550px;
+  height: 100%;
+}
+
+.card-footer{
+  height: 100px;
 }
 
 .social_icon span{
