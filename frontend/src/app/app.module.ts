@@ -16,7 +16,7 @@ import { RouterModule,Routes } from "@angular/router";
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatDividerModule } from '@angular/material/divider';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { WodService } from './services/wod.service';
 import { WeightliftingService } from './services/weightlifting.service';
 import { AddWeightliftingFormComponent } from './addweightliftingform/addweightliftingform.component';
@@ -31,6 +31,11 @@ import { ModifyWodFormComponent } from './modifywod/modifywodform.component';
 
 //routes
 import {appRoutes} from './routes';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserService } from './shared/user.service';
+
+import {AuthGuard} from './auth/auth.guard';
+import {AuthInterceptor} from './auth/auth.interceptor';
 
 
 @NgModule({
@@ -49,6 +54,7 @@ import {appRoutes} from './routes';
     ListeweightliftingComponent,
     SignUpComponent,
     ModifyWodFormComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,7 +70,10 @@ import {appRoutes} from './routes';
     MatDividerModule,
     BrowserAnimationsModule,
   ],
-  providers: [WodService, WeightliftingService],
+  providers: [WodService, WeightliftingService, UserService, AuthGuard, {
+    provide:HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

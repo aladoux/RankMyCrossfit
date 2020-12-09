@@ -10,6 +10,8 @@ import { ModifyWeightliftingFormComponent } from './modifyweightliftingform/modi
 import { WeightliftingDisplayComponent } from './weightliftingdisplay/weightliftingdisplay.component';
 import { LoginPageComponent} from './login-page/login-page.component';
 import { ModifyWodFormComponent } from './modifywod/modifywodform.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import {AuthGuard} from './auth/auth.guard';
 
 export const appRoutes: Routes = [
   {
@@ -48,4 +50,7 @@ export const appRoutes: Routes = [
   {
     path: 'login' , component: LoginPageComponent
   },
+  {
+    path: 'userprofile' , component: UserProfileComponent, canActivate: [AuthGuard]
+  }
 ];
