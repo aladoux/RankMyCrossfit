@@ -8,5 +8,76 @@
 .bandeau{
   width:100%;
   height: 65%;
-  background-color: black;
+  //background-size: contain;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../../assets/images/acc-band.jpg");
+}
+
+@media screen and (min-width: 768px)
+{
+    .leftside, .rightside {
+      height:100vh;
+    }
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50% }
+  50% { background-position: 100% 50% }
+  100% { background-position: 0% 50% }
+}
+
+#signup{
+  font-size: 18px;
+  padding: 15px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  background-color: #fff;
+  border: 0;
+  outline: 0;
+  box-shadow: 0 5px 10px 0 rgba(205, 209, 215, 0.8);
+  color: #afb4bb;
+  background: linear-gradient(to right, #e6e223, #08993f);
+  color: #fff;
+  animation: gradient 3s ease infinite;
+  background-size: 300% 300%;
+}
+
+#para-right{
+  font-weight: bold;
+  font-size:35px;
+}
+
+.card{
+  border: none;
+}
+
+.rightside, .leftside{
+  height:60vh;
+  width: 100%;
+}
+
+.leftside{
+
+}
+
+.rightside{
+
+}
+
+.card-title{
+  font-size:20px;
+  font-weight: bold;
+}
+
+#img-card{
+  background:black;
+  height: 20%;
+  width:20%;
+}
+
+#para-left{
+  font-size:15px;
 }

@@ -1,3 +1,4 @@
+<div class="container">
 <table *ngIf="userDetails" class="table-fill">
   <thead>
     <tr>
@@ -6,16 +7,24 @@
   </thead>
   <tbody>
     <tr>
-      <td>First Name</td>
+      <td>First Name </td>
       <td>{{userDetails.firstName}}</td>
     </tr>
     <tr>
-      <td>Last Name</td>
+      <td>Last Name </td>
       <td>{{userDetails.lastName}}</td>
     </tr>
     <tr>
-      <td>Email</td>
+      <td>Email </td>
       <td>{{userDetails.email}}</td>
+    </tr>
+    <tr>
+      <td>Sexe </td>
+      <td>{{userDetails.sexe}}</td>
+    </tr>
+    <tr>
+      <td>Nationnality </td>
+      <td>{{userDetails.nation}}</td>
     </tr>
     <tr>
       <td colspan="2" class="text-center">
@@ -24,3 +33,4 @@
     </tr>
   </tbody>
 </table>
+</div>
