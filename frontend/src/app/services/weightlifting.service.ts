@@ -18,16 +18,22 @@ export class WeightliftingService {
     return this.http.get(`${this.uri}/weightliftings/${id}`);
   }
 
-  addWeightlifting(name) {
+  addWeightlifting(name, desc, tips) {
     const weightlifting = {
-      name: name
+      name: name,
+      desc: desc,
+      tips: tips
     };
+    console.log(weightlifting.desc);
+    console.log(weightlifting.tips);
     return this.http.post(`${this.uri}/weightliftings/add`, weightlifting)
   }
 
-  updateWeightlifting(id, name) {
+  updateWeightlifting(id, name, desc, tips) {
     const weightlifting = {
-      name: name
+      name: name,
+      desc: desc,
+      tips: tips
     };
     return this.http.post(`${this.uri}/weightliftings/update/${id}`, weightlifting)
   }

@@ -1,8 +1,10 @@
 import { Component,Input, OnInit, enableProdMode } from '@angular/core';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {WeightliftingService} from '../services/weightlifting.service'
 import {Router} from '@angular/router'
 import {ActivatedRoute} from '@angular/router';
 import {Weightlifting} from '../weightlifting.model';
+import {DialogRecordWeiComponent} from '../dialog-record-wei/dialog-record-wei.component';
 
 
 
@@ -15,7 +17,9 @@ import {Weightlifting} from '../weightlifting.model';
 export class WeightliftingDisplayComponent implements OnInit {
   weightlifting: Weightlifting;
   id: String;
-  constructor(private weightliftingService: WeightliftingService, private router: ActivatedRoute) { }
+  record: Number;
+
+  constructor(private dialog: MatDialog,private weightliftingService: WeightliftingService, private router: ActivatedRoute) { }
 
   ngOnInit(){
    this.router.params.subscribe(params => {
@@ -33,4 +37,11 @@ export class WeightliftingDisplayComponent implements OnInit {
         console.log(this.weightlifting);
       });
   }
+
+  openDialog(id): void {
+    let dialo = this.dialog.open(DialogRecordWeiComponent);
+    dialo.componentInstance.idWei = this.id;
+  }
+
 }
+

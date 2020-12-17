@@ -2,6 +2,7 @@
 
   <h1>Wod</h1>
 
+  <div id="newRow"></div>
   <form [formGroup]="productForm" >
 
     <p>
@@ -12,12 +13,21 @@
     <table class="table" formArrayName="exercises">
       <tr>
         <th colspan="2">Add exercise:</th>
-        <th width="150px"><button type="button" (click)="addExercise()" class="btn btn-primary">Add More</button></th>
+        <th width="150px"><button type="button" (click)="addExistingWeightlifting()" class="btn btn-primary">Add existing weightlifting</button></th>
+
+        <th width="150px"><button type="button" (click)="addExercise()" class="btn btn-primary">Add simple exercise</button></th>
       </tr>
       <tr *ngFor="let exercise of exercises().controls; let i=index" [formGroupName]="i">
         <td>
-            Exercise Name:
+            Name:
             <input type="text" formControlName="exoName" class="form-control">
+
+        </td>
+        <td>
+          Name:
+          <select class="form-control" formControlName="list">
+              <option *ngFor="let weightlifting of this.weightliftings" [value]="weightlifting.name">{{ weightlifting.name }}</option>
+            </select>
         </td>
         <td>
             Weight (kg):
@@ -54,3 +64,4 @@
 <button class="btn btn-success" (click)="onAddWod()">Add Wod</button>
 <button class="btn btn-danger" (click)="onBack()">Cancel</button>
 </div>
+

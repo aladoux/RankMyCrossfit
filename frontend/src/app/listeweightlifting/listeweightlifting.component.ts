@@ -2,7 +2,7 @@ import { Component,Input, OnInit, enableProdMode } from '@angular/core';
 import {WeightliftingService} from '../services/weightlifting.service'
 import {Router} from '@angular/router'
 import {Weightlifting} from '../weightlifting.model';
-
+import {UserService} from '../shared/user.service';
 
 
 @Component({
@@ -16,11 +16,13 @@ export class ListeweightliftingComponent implements OnInit {
   weightliftings: Weightlifting[];
   displayedColumns = ['name'];
   weightliftingname = "";
+  token = "";
 
-  constructor(private weightliftingService: WeightliftingService, private router: Router) { }
+  constructor(private weightliftingService: WeightliftingService, private router: Router, private userService: UserService) { }
 
   ngOnInit(){
     this.fetchWeightliftings();
+    this.token = this.userService.getToken();
   }
 
   fetchWeightliftings(){

@@ -26,6 +26,7 @@ module.exports.displayId = (req,res) => {
 
 module.exports.add = (req, res) => {
     let weightlifting = new Weightlifting(req.body);
+    console.log("coucou"+ req.body);
     weightlifting.save()
         .then(weightlifting => {
             res.status(200).json({'weightlifting': 'Added successfully'});
@@ -42,6 +43,8 @@ module.exports.update = (req, res) => {
         }
         else{
             weightlifting.name = req.body.name;
+            weightlifting.desc = req.body.desc;
+            weightlifting.tips = req.body.tips;
             weightlifting.save().then(weightlifting => {
                 res.json('Update done');
             }).catch(err => {

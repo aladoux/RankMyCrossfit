@@ -4,6 +4,7 @@ const router = express.Router();
 const ctrlUser = require('../controllers/user.controller');
 const ctrlWeightlifting = require('../controllers/weightlifting.controller');
 const ctrlWod = require('../controllers/wod.controller');
+const ctrlRecordWei = require('../controllers/recordWei.controller');
 
 const jwtHelper = require('../config/jwtHelper');
 
@@ -11,6 +12,7 @@ const jwtHelper = require('../config/jwtHelper');
 router.post('/register', ctrlUser.register);
 router.post('/authenticate', ctrlUser.authenticate);
 router.get('/userProfile',jwtHelper.verifyJwtToken , ctrlUser.userProfile);
+router.get('/user/:id', ctrlUser.displayId);
 
 /**ROUTES WEIGHTLIFTING */
 router.get('/weightliftings', ctrlWeightlifting.display);
@@ -25,5 +27,14 @@ router.get('/wods/:id', ctrlWod.displayId);
 router.post('/wods/add', ctrlWod.add);
 router.get('/wods/remove/:id', ctrlWod.remove);
 router.post('/wods/update/:id', ctrlWod.update);
+
+/**ROUTES RECORDWEI */
+router.get('/recordWei', ctrlRecordWei.display); //get all weightlifting records
+router.get('/recordWei/:id', ctrlRecordWei.displayId); //get a weightlifting record with his id
+router.get('/recordWei/weightlifting/:id', ctrlRecordWei.displayByWeiId); //get records for a weightlifting id passed
+router.get('/recordWei/user/:id', ctrlRecordWei.displayByUserId); //get records of an user is passed in parameter
+router.post('/recordWei/add', ctrlRecordWei.add);
+router.get('/recordWei/remove/:id', ctrlRecordWei.remove);
+router.get('/recordWei/update/:id', ctrlRecordWei.update);
 
 module.exports = router;

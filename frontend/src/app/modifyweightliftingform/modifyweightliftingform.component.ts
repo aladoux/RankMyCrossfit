@@ -34,6 +34,8 @@ onBack(){
 
     this.productForm = this.fb.group({
       name: ['', Validators.required],
+      desc: [''],
+      tips: ['']
     });
   }
 
@@ -48,12 +50,11 @@ onBack(){
         this.weightlifting = data;
         console.log('Data requested ...');
         console.log(this.weightlifting);
-        this.productForm.setValue({name: this.weightlifting.name});
       });
   }
 
   onModifyWeightlifting() {
-    this.weightliftingService.updateWeightlifting(this.id,this.productForm.value.name).subscribe(() => {
+    this.weightliftingService.updateWeightlifting(this.id,this.productForm.value.name, this.productForm.value.desc,this.productForm.value.tips).subscribe(() => {
       this.route.navigate(['/weightliftings']);
     });
 

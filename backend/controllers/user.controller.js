@@ -58,8 +58,19 @@ module.exports.userProfile = (req, res, next) =>{
                     return res.status(404).json({ status: false, message: 'User record not found.'});
                 }
                 else{
-                    return res.status(200).json({ status: true, user: _.pick(user,['username','email','lastName','firstName', 'sexe','nation']) });
+                    return res.status(200).json({ status: true, user: _.pick(user,['_id','username','email','lastName','firstName', 'sexe','nation']) });
                 }
             }
         );
+}
+
+module.exports.displayId = (req,res) => {
+    User.findById(req.params.id, (err, user) => {
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.json(user);
+        }
+    });
 }

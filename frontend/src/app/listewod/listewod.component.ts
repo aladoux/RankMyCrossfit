@@ -2,6 +2,7 @@ import { Component,Input, OnInit, enableProdMode } from '@angular/core';
 import {WodService} from '../services/wod.service'
 import {Router} from '@angular/router'
 import {Wod} from '../wod.model';
+import {UserService} from '../shared/user.service';
 
 
 
@@ -17,11 +18,13 @@ export class ListewodComponent implements OnInit {
   wods: Wod[];
   displayedColumns = ['name'];
   wodname = "";
+  token = "";
 
-  constructor(private wodService: WodService, private router: Router) { }
+  constructor(private wodService: WodService, private router: Router, private userService: UserService) { }
 
   ngOnInit(){
     this.fetchWods();
+    this.token = this.userService.getToken();
   }
 
   fetchWods(){
