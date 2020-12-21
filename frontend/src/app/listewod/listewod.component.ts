@@ -1,7 +1,7 @@
 import { Component,Input, OnInit, enableProdMode } from '@angular/core';
-import {WodService} from '../services/wod.service'
+import {WodService} from '../shared/wod.service'
 import {Router} from '@angular/router'
-import {Wod} from '../wod.model';
+import {Wod} from '../shared/wod.model';
 import {UserService} from '../shared/user.service';
 
 

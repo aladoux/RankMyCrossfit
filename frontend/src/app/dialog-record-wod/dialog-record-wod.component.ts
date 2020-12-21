@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RecordWeiService } from '../shared/recordWei.service';
+import { RecordWodService } from '../shared/recordWod.service';
 import {UserService } from '../shared/user.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
@@ -7,13 +7,13 @@ import {ActivatedRoute} from '@angular/router';
 
 
 @Component({
-  selector: 'app-dialog-record-wei',
-  templateUrl: './dialog-record-wei.component.html',
-  styleUrls: ['./dialog-record-wei.component.scss']
+  selector: 'app-dialog-record-wod',
+  templateUrl: './dialog-record-wod.component.html',
+  styleUrls: ['./dialog-record-wod.component.scss']
 })
-export class DialogRecordWeiComponent implements OnInit {
+export class DialogRecordWodComponent implements OnInit {
   userDetails;
-  idWei : String;
+  idWod : String;
   serverErrorMessages: string;
   formisvalid: boolean;
 
@@ -27,24 +27,11 @@ export class DialogRecordWeiComponent implements OnInit {
     );
   }
 
-  constructor(private routeAc: ActivatedRoute,private router: Router,private userService: UserService,public recordWeiService: RecordWeiService) { }
-
-
-
-  /*onSubmit(form: NgForm){
-
-    console.log();
-    //fonctionneconsole.log(this.userDetails._id);
-    //fonctionneconsole.log(this.idWei);
-    this.recordWeiService.addRecordWei(this.userDetails._id, this.idWei, this.productForm.value.record,"").subscribe(() => {
-      this.router.navigate(['/weightliftings']);
-    });
-    //console.log(this.productForm.value);
-  }*/
+  constructor(private routeAc: ActivatedRoute,private router: Router,private userService: UserService,public recordWodService: RecordWodService) { }
 
   onSubmit(form: NgForm){
     console.log(form.value);
-    this.recordWeiService.addRecordWei(this.userDetails._id,this.idWei,form.value.record,form.value.state).subscribe(
+    this.recordWodService.addRecordWod(this.userDetails._id,this.idWod,form.value.record,form.value.state).subscribe(
       res => {
         this.resetForm(form);
         this.formisvalid = true;
@@ -59,9 +46,9 @@ export class DialogRecordWeiComponent implements OnInit {
   }
 
   resetForm(form: NgForm) {
-    this.recordWeiService.selectedRecordWei = {
+    this.recordWodService.selectedRecordWod = {
       idUser: '',
-      idWei: '',
+      idWod: '',
       record: 0,
       state: ''
     };

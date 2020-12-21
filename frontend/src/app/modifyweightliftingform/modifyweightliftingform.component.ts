@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup ,ReactiveFormsModule , FormControl, FormArray, FormBuilder, Validators } from '@angular/forms';
-import {WeightliftingService} from '../services/weightlifting.service';
+import {WeightliftingService} from '../shared/weightlifting.service';
 import {ActivatedRoute} from '@angular/router';
-import {Weightlifting} from '../weightlifting.model';
+import {Weightlifting} from '../shared/weightlifting.model';
 
 
 

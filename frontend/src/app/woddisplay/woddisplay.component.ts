@@ -1,9 +1,13 @@
 import { Component,Input, OnInit, enableProdMode } from '@angular/core';
-import {WodService} from '../services/wod.service'
+import {WodService} from '../shared/wod.service'
 import {ActivatedRoute} from '@angular/router';
-import {Wod} from '../wod.model';
+import {Wod} from '../shared/wod.model';
 import { BrowserModule } from '@angular/platform-browser'
-import {Exercise} from '../exercise.model';
+import {Exercise} from '../shared/exercise.model';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {DialogRecordWodComponent} from '../dialog-record-wod/dialog-record-wod.component';
+import {UserService} from '../shared/user.service';
+
 
 
 @Component({
@@ -16,13 +20,16 @@ export class WodDisplayComponent implements OnInit {
   wod: Wod;
   exercises: Exercise[];
   id: String;
-  constructor(private wodService: WodService, private router: ActivatedRoute) { }
+  token = "";
+
+  constructor(private dialog: MatDialog,private wodService: WodService, private router: ActivatedRoute,private userService: UserService) { }
 
   ngOnInit(){
    this.router.params.subscribe(params => {
     this.id = params['id'];
     });
    this.fetchWod();
+   this.token = this.userService.getToken();
   }
 
   fetchWod(){
@@ -33,5 +40,10 @@ export class WodDisplayComponent implements OnInit {
         this.exercises = data.exercises;
         console.log('Data requested ...');
       });
+  }
+
+  openDialog(id): void {
+    let dialo = this.dialog.open(DialogRecordWodComponent);
+    dialo.componentInstance.idWod = this.id;
   }
 }

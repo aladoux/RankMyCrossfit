@@ -37,7 +37,23 @@
   </tbody>
 </table>
 
-<div id="classements" class="container">
-
+<div class="d-flex justify-content-center align-items-center">
+  <button *ngIf="this.token" id="addRecord" class="btn btn-success" (click)="openDialog(this.id)">Add record </button>
 </div>
+
+<div class="row no-gutters">
+  <div class="col-md-6 no-gutters">
+    <div class="leftside d-flex justify-content-center align-items-center">
+          <h2>Men Records</h2>
+          <table></table>
+    </div>
+  </div>
+  <div class="col-md-6 no-gutters">
+    <div class="rightside d-flex justify-content-center align-items-center">
+      <h2>Women Records</h2>
+      <table></table>
+    </div>
+    </div>
+</div>
+
 </div>

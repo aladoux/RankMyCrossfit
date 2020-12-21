@@ -3,15 +3,15 @@
   <br>
   <form #addRecordForm="ngForm" (ngSubmit)="addRecordForm.valid && onSubmit(addRecordForm)" class="col-6 ">
     <div class="input-group form-group">
-      <input  id="record" class="form-control" #record="ngModel" [(ngModel)]="recordWeiService.selectedRecordWei.record" name="record" type="number">kg
+      <input  id="record" class="form-control" #record="ngModel" [(ngModel)]="recordWodService.selectedRecordWod.record" name="record" type="number">min
     </div>
 
     <div class="form-check-inline">
-      <input class="form-check-input"  id="public" value="public" type="radio" #state="ngModel" [(ngModel)]="recordWeiService.selectedRecordWei.state" name="state" checked>
+      <input class="form-check-input"  id="public" value="public" type="radio" #state="ngModel" [(ngModel)]="recordWodService.selectedRecordWod.state" name="state" checked>
       <label id="publicLabel" class="form-check-label" for="public">Public</label>
     </div>
     <div class="form-check-inline">
-      <input class="form-check-input" id="private" value="private" type="radio" #state="ngModel" [(ngModel)]="recordWeiService.selectedRecordWei.state" name="state">
+      <input class="form-check-input" id="private" value="private" type="radio" #state="ngModel" [(ngModel)]="recordWodService.selectedRecordWod.state" name="state">
       <label id="privateLabel" class="form-check-label" for="private">Private</label>
     </div>
 

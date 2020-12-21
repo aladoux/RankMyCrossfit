@@ -2,12 +2,12 @@ import { TestBed } from '@angular/core/testing';
 
 import { RecordWeiService } from './recordWei.service';
 
-describe('WeightliftingService', () => {
-  let service: WeightliftingService;
+describe('RecordWeiService', () => {
+  let service: RecordWeiService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(WeightliftingService);
+    service = TestBed.inject(RecordWeiService);
   });
 
   it('should be created', () => {

@@ -1,7 +1,7 @@
 import { Component,Input, OnInit, enableProdMode } from '@angular/core';
-import {WeightliftingService} from '../services/weightlifting.service'
+import {WeightliftingService} from '../shared/weightlifting.service'
 import {Router} from '@angular/router'
-import {Weightlifting} from '../weightlifting.model';
+import {Weightlifting} from '../shared/weightlifting.model';
 import {UserService} from '../shared/user.service';
 
 

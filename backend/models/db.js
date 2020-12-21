@@ -12,3 +12,5 @@ mongoose.connect(process.env.MONGODB_URI, (err) => {
 require('./user.model');
 require('./weightlifting.model');
 require('./wod.model');
+require('./recordWei.model');
+require('./recordWod.model');

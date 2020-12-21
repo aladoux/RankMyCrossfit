@@ -1,10 +1,17 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import { RecordWei } from './recordWei.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecordWeiService {
+  selectedRecordWei: RecordWei = {
+  idUser: '',
+  idWei: '',
+  record: 0,
+  state: ''
+  };
 
   uri = 'http://localhost:4000/rankmycrossfit';
 
@@ -18,11 +25,12 @@ export class RecordWeiService {
     return this.http.get(`${this.uri}/recordWei/${id}`);
   }
 
-  addRecordWei(idUser, idWei, record) {
+  addRecordWei(idUser, idWei, record, state) {
     const recordWei = {
       idUser: idUser,
       idWei: idWei,
-      record: record
+      record: record,
+      state: state
     };
     return this.http.post(`${this.uri}/recordWei/add`, recordWei)
   }

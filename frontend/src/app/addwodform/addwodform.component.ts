@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup,FormControl, FormArray, FormBuilder, Validators } from '@angular/forms'
-import {WodService} from '../services/wod.service';
-import {WeightliftingService} from '../services/weightlifting.service';
-import {Weightlifting} from '../weightlifting.model';
+import {WodService} from '../shared/wod.service';
+import {WeightliftingService} from '../shared/weightlifting.service';
+import {Weightlifting} from '../shared/weightlifting.model';
 
 
 @Component({

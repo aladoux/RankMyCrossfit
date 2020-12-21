@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup ,ReactiveFormsModule , FormControl, FormArray, FormBuilder, Validators } from '@angular/forms';
-import {WodService} from '../services/wod.service';
+import {WodService} from '../shared/wod.service';
 import {ActivatedRoute} from '@angular/router';
-import {Wod} from '../wod.model';
-import {Exercise} from '../exercise.model';
+import {Wod} from '../shared/wod.model';
+import {Exercise} from '../shared/exercise.model';
 
 
 

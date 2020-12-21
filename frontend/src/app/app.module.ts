@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {DialogRecordWeiComponent} from './dialog-record-wei/dialog-record-wei.component';
+import {DialogRecordWodComponent} from './dialog-record-wod/dialog-record-wod.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,8 +18,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatDividerModule } from '@angular/material/divider';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { WodService } from './services/wod.service';
-import { WeightliftingService } from './services/weightlifting.service';
+import { WodService } from './shared/wod.service';
+import { WeightliftingService } from './shared/weightlifting.service';
 import { AddWeightliftingFormComponent } from './addweightliftingform/addweightliftingform.component';
 import { WodDisplayComponent } from './woddisplay/woddisplay.component';
 import { WeightliftingDisplayComponent } from './weightliftingdisplay/weightliftingdisplay.component';
@@ -56,6 +57,7 @@ import {AuthInterceptor} from './auth/auth.interceptor';
     ModifyWodFormComponent,
     UserProfileComponent,
     DialogRecordWeiComponent,
+    DialogRecordWodComponent
   ],
   entryComponents: [
     DialogRecordWeiComponent,

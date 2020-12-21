@@ -1,7 +1,6 @@
-export interface recordWei{
-  _id: String,
+export interface RecordWei{
   idUser: String,
   idWei: String,
-  perf: Number,
+  record: Number,
   state: String //public or private
 }

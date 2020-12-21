@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
-let recordWeiSchema = new mongoose.Schema({
+let recordWodSchema = new mongoose.Schema({
     idUser: {
          type: String
      },
-     idWei: {
+     idWod: {
          type: String
      },
      record: {
@@ -15,4 +15,4 @@ let recordWeiSchema = new mongoose.Schema({
      }
  });
 
- mongoose.model('RecordWei', recordWeiSchema);
+ mongoose.model('RecordWod', recordWodSchema);

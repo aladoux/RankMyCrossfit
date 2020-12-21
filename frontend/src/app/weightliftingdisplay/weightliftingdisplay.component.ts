@@ -1,10 +1,11 @@
 import { Component,Input, OnInit, enableProdMode } from '@angular/core';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
-import {WeightliftingService} from '../services/weightlifting.service'
+import {WeightliftingService} from '../shared/weightlifting.service'
 import {Router} from '@angular/router'
 import {ActivatedRoute} from '@angular/router';
-import {Weightlifting} from '../weightlifting.model';
+import {Weightlifting} from '../shared/weightlifting.model';
 import {DialogRecordWeiComponent} from '../dialog-record-wei/dialog-record-wei.component';
+import {UserService} from '../shared/user.service';
 
 
 
@@ -18,14 +19,16 @@ export class WeightliftingDisplayComponent implements OnInit {
   weightlifting: Weightlifting;
   id: String;
   record: Number;
+  token = "";
 
-  constructor(private dialog: MatDialog,private weightliftingService: WeightliftingService, private router: ActivatedRoute) { }
+  constructor(private dialog: MatDialog,private weightliftingService: WeightliftingService, private router: ActivatedRoute,private userService: UserService) { }
 
   ngOnInit(){
    this.router.params.subscribe(params => {
     this.id = params['id'];
     });
    this.fetchWeightlifting();
+   this.token = this.userService.getToken();
   }
 
   fetchWeightlifting(){
