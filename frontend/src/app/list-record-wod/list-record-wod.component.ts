@@ -40,4 +40,10 @@ export class ListRecordWodComponent implements OnInit {
       });
   }
 
+  deleteRecordWod(id){
+    this.recordWodService.deleteRecordWod(id).subscribe(() => {
+      this.fetchRecords();
+    });
+  }
+
 }

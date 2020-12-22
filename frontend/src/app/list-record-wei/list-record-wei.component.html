@@ -8,8 +8,8 @@
           <label> {{record.name}} </label>
           <label> {{record.record}} kg </label>
           <label> {{record.date}} </label>
-          <!--<button class="btn btn-warning" [routerLink]="['/weightliftings/modify',weightlifting._id]">Modify</button>
-          <button class="btn btn-danger" (click)="deleteWeightlifting(weightlifting._id)" >Delete</button>-->
+          <button class="btn btn-warning" (click)="openDialog(record)">Modify</button>
+          <button class="btn btn-danger" (click)="deleteRecordWei(record._id)" >Delete</button>
         </td>
       </ul>
     </div>

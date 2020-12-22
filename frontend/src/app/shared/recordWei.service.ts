@@ -7,6 +7,7 @@ import { RecordWei } from './recordWei.model';
 })
 export class RecordWeiService {
   selectedRecordWei: RecordWei = {
+  _id: '',
   idUser: '',
   idWei: '',
   name: '',

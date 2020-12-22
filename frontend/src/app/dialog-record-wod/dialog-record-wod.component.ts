@@ -48,6 +48,7 @@ export class DialogRecordWodComponent implements OnInit {
 
   resetForm(form: NgForm) {
     this.recordWodService.selectedRecordWod = {
+      _id: '',
       idUser: '',
       idWod: '',
       name: '',

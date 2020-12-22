@@ -7,6 +7,7 @@ import { RecordWod } from './recordWod.model';
 })
 export class RecordWodService {
   selectedRecordWod: RecordWod = {
+    _id: '',
   idUser: '',
   idWod: '',
   name: '',

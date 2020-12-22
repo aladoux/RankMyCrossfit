@@ -3,6 +3,9 @@ import { RecordWeiService } from '../shared/recordWei.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../shared/user.service';
 import {RecordWei} from '../shared/recordWei.model';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {DialogModifyRecordWeiComponent } from '../dialog-modify-record-wei/dialog-modify-record-wei.component';
+
 
 @Component({
   selector: 'app-list-record-wei',
@@ -15,7 +18,7 @@ recordWei: RecordWei[];
 user;
 userId;
 
-  constructor(private userService: UserService,private recordWeiService: RecordWeiService, private router: Router, private acRoute: ActivatedRoute) { }
+  constructor(private dialog: MatDialog,private userService: UserService,private recordWeiService: RecordWeiService, private router: Router, private acRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.acRoute.params.subscribe(params => {
@@ -38,6 +41,18 @@ userId;
         console.log('Data requested ...');
         console.log(this.recordWei);
       });
+  }
+
+  deleteRecordWei(id){
+    this.recordWeiService.deleteRecordWei(id).subscribe(() => {
+      this.fetchRecords();
+    });
+  }
+
+  openDialog(id, name): void {
+    let dialo = this.dialog.open(DialogModifyRecordWeiComponent);
+    dialo.componentInstance.idWei = id;
+    dialo.componentInstance.name = name;
   }
 
 }

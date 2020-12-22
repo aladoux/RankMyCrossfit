@@ -5,36 +5,29 @@ import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import {ActivatedRoute} from '@angular/router';
 
-
 @Component({
-  selector: 'app-dialog-record-wei',
-  templateUrl: './dialog-record-wei.component.html',
-  styleUrls: ['./dialog-record-wei.component.scss']
+  selector: 'app-dialog-modify-record-wei',
+  templateUrl: './dialog-modify-record-wei.component.html',
+  styleUrls: ['./dialog-modify-record-wei.component.scss']
 })
-export class DialogRecordWeiComponent implements OnInit {
-  userDetails;
+export class DialogModifyRecordWeiComponent implements OnInit {
+  recordWei;
   name: String;
   idWei : String;
   serverErrorMessages: string;
   formisvalid: boolean;
 
 
-  ngOnInit(): void {
-    this.userService.getUserProfile().subscribe(
-      res =>{
-        this.userDetails = res['user'];
-      },
-      err =>{}
-    );
-  }
-
   constructor(private routeAc: ActivatedRoute,private router: Router,private userService: UserService,public recordWeiService: RecordWeiService) { }
 
+  ngOnInit(): void {
+
+  }
 
 
   onSubmit(form: NgForm){
     console.log(form.value);
-    this.recordWeiService.addRecordWei(this.userDetails._id,this.idWei,this.name,form.value.record,form.value.state,form.value.date).subscribe(
+    this.recordWeiService.updateRecordWei(this.recordWei._id,form.value.record,form.value.state,form.value.date).subscribe(
       res => {
         this.formisvalid = true;
       },

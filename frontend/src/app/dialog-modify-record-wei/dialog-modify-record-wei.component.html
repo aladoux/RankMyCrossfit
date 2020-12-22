@@ -1,0 +1,28 @@
+<div class="container">
+  <h1>Modify a record:</h1>
+  <br>
+  <form #addRecordForm="ngForm" (ngSubmit)="addRecordForm.valid && onSubmit(addRecordForm)" class="col-10 ">
+    <div class="input-group form-group">
+      <input  id="record" class="form-control" #record="ngModel" [(ngModel)]="this.recordWei.record" name="record" type="number">kg
+    </div>
+
+    <div class="form-check-inline">
+      <input class="form-check-input"  id="public" value="public" type="radio" #state="ngModel" [(ngModel)]="this.recordWei.state" name="state" checked>
+      <label id="publicLabel" class="form-check-label" for="public">Public</label>
+    </div>
+    <div class="form-check-inline">
+      <input class="form-check-input" id="private" value="private" type="radio" #state="ngModel" [(ngModel)]="this.recordWei.state" name="state">
+      <label id="privateLabel" class="form-check-label" for="private">Private</label>
+    </div>
+
+    <div class="input-group form-group" id="datepicker">
+      <input class="form-control" type="date" #date="ngModel" [(ngModel)]="this.recordWei.date" name="date" placeholder="Date">
+    </div>
+
+      <br>
+      <div class="form-check form-check-inline">
+          <button class="btn float-right btn-success" [mat-dialog-close]="formisvalid" type="submit">Add</button>
+      </div>
+  </form>
+
+</div>

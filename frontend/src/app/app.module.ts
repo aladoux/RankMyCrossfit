@@ -40,6 +40,8 @@ import {AuthGuard} from './auth/auth.guard';
 import {AuthInterceptor} from './auth/auth.interceptor';
 import { ListRecordWeiComponent } from './list-record-wei/list-record-wei.component';
 import { ListRecordWodComponent } from './list-record-wod/list-record-wod.component';
+import { DialogModifyRecordWodComponent } from './dialog-modify-record-wod/dialog-modify-record-wod.component';
+import { DialogModifyRecordWeiComponent } from './dialog-modify-record-wei/dialog-modify-record-wei.component';
 
 
 @NgModule({
@@ -63,6 +65,8 @@ import { ListRecordWodComponent } from './list-record-wod/list-record-wod.compon
     DialogRecordWodComponent,
     ListRecordWeiComponent,
     ListRecordWodComponent,
+    DialogModifyRecordWodComponent,
+    DialogModifyRecordWeiComponent,
   ],
   entryComponents: [
     DialogRecordWeiComponent,

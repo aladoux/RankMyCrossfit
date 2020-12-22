@@ -36,7 +36,7 @@ router.get('/recordWei/:id', ctrlRecordWei.displayId); //get a weightlifting rec
 //router.get('/recordWei/user/:id', ctrlRecordWei.displayByUserId); //get records of an user is passed in parameter
 router.post('/recordWei/add', ctrlRecordWei.add);
 router.get('/recordWei/remove/:id', ctrlRecordWei.remove);
-//router.post('/recordWei/update/:id', ctrlRecordWei.update);
+router.post('/recordWei/update/:id', ctrlRecordWei.update);
 
 /**ROUTES RECORDWOD */
 router.get('/myRecordsWod/:id', ctrlRecordWod.displayUserId); //get all wod records

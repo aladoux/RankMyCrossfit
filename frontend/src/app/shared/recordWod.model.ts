@@ -1,4 +1,5 @@
 export interface RecordWod{
+  _id: String,
   idUser: String,
   idWod: String,
   name: String,
