@@ -41,9 +41,10 @@ export class WeightliftingDisplayComponent implements OnInit {
       });
   }
 
-  openDialog(id): void {
+  openDialog(id, name): void {
     let dialo = this.dialog.open(DialogRecordWeiComponent);
-    dialo.componentInstance.idWei = this.id;
+    dialo.componentInstance.idWei = id;
+    dialo.componentInstance.name = name;
   }
 
 }

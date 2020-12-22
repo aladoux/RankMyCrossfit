@@ -19,6 +19,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDividerModule } from '@angular/material/divider';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { WodService } from './shared/wod.service';
+
 import { WeightliftingService } from './shared/weightlifting.service';
 import { AddWeightliftingFormComponent } from './addweightliftingform/addweightliftingform.component';
 import { WodDisplayComponent } from './woddisplay/woddisplay.component';
@@ -37,6 +38,8 @@ import { UserService } from './shared/user.service';
 
 import {AuthGuard} from './auth/auth.guard';
 import {AuthInterceptor} from './auth/auth.interceptor';
+import { ListRecordWeiComponent } from './list-record-wei/list-record-wei.component';
+import { ListRecordWodComponent } from './list-record-wod/list-record-wod.component';
 
 
 @NgModule({
@@ -57,7 +60,9 @@ import {AuthInterceptor} from './auth/auth.interceptor';
     ModifyWodFormComponent,
     UserProfileComponent,
     DialogRecordWeiComponent,
-    DialogRecordWodComponent
+    DialogRecordWodComponent,
+    ListRecordWeiComponent,
+    ListRecordWodComponent,
   ],
   entryComponents: [
     DialogRecordWeiComponent,

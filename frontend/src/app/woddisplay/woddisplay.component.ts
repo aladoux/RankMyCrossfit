@@ -42,8 +42,9 @@ export class WodDisplayComponent implements OnInit {
       });
   }
 
-  openDialog(id): void {
+  openDialog(id, name): void {
     let dialo = this.dialog.open(DialogRecordWodComponent);
-    dialo.componentInstance.idWod = this.id;
+    dialo.componentInstance.idWod = id;
+    dialo.componentInstance.name = name;
   }
 }

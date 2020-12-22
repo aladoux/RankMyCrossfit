@@ -13,6 +13,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class DialogRecordWodComponent implements OnInit {
   userDetails;
+  name: String;
   idWod : String;
   serverErrorMessages: string;
   formisvalid: boolean;
@@ -31,7 +32,7 @@ export class DialogRecordWodComponent implements OnInit {
 
   onSubmit(form: NgForm){
     console.log(form.value);
-    this.recordWodService.addRecordWod(this.userDetails._id,this.idWod,form.value.record,form.value.state).subscribe(
+    this.recordWodService.addRecordWod(this.userDetails._id,this.idWod,this.name,form.value.record,form.value.state, form.value.date).subscribe(
       res => {
         this.resetForm(form);
         this.formisvalid = true;
@@ -49,8 +50,10 @@ export class DialogRecordWodComponent implements OnInit {
     this.recordWodService.selectedRecordWod = {
       idUser: '',
       idWod: '',
+      name: '',
       record: 0,
-      state: ''
+      state: '',
+      date: new Date()
     };
     form.resetForm();
     this.serverErrorMessages = '';

@@ -13,6 +13,17 @@ module.exports.display = (req,res) => {
     })
 }
 
+module.exports.displayUserId = (req,res) => {
+    RecordWod.find({idUser: req.params.id}, (err, recordWod) => {
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.json(recordWod);
+        }
+    });
+}
+
 module.exports.displayId = (req,res) => {
     RecordWod.findById(req.params.id, (err, recordWod) => {
         if(err){

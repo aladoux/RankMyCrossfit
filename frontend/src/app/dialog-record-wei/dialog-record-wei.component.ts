@@ -13,6 +13,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class DialogRecordWeiComponent implements OnInit {
   userDetails;
+  name: String;
   idWei : String;
   serverErrorMessages: string;
   formisvalid: boolean;
@@ -44,7 +45,7 @@ export class DialogRecordWeiComponent implements OnInit {
 
   onSubmit(form: NgForm){
     console.log(form.value);
-    this.recordWeiService.addRecordWei(this.userDetails._id,this.idWei,form.value.record,form.value.state).subscribe(
+    this.recordWeiService.addRecordWei(this.userDetails._id,this.idWei,this.name,form.value.record,form.value.state,form.value.date).subscribe(
       res => {
         this.resetForm(form);
         this.formisvalid = true;
@@ -62,8 +63,10 @@ export class DialogRecordWeiComponent implements OnInit {
     this.recordWeiService.selectedRecordWei = {
       idUser: '',
       idWei: '',
+      name: '',
       record: 0,
-      state: ''
+      state: '',
+      date: new Date()
     };
     form.resetForm();
     this.serverErrorMessages = '';

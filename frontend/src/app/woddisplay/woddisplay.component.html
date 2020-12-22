@@ -38,7 +38,7 @@
 </table>
 
 <div class="d-flex justify-content-center align-items-center">
-  <button *ngIf="this.token" id="addRecord" class="btn btn-success" (click)="openDialog(this.id)">Add record </button>
+  <button *ngIf="this.token" id="addRecord" class="btn btn-success" (click)="openDialog(this.id, this.wod.name)">Add record </button>
 </div>
 
 <div class="row no-gutters">

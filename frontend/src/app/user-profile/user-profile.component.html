@@ -33,4 +33,66 @@
     </tr>
   </tbody>
 </table>
+<br><br>
+<h1>My Records</h1>
+<br><br>
+<div class="row no-gutters">
+
+  <div class="col-md-6 no-gutters">
+    <div class="leftside justify-content-center align-items-center">
+
+          <h2>Wods</h2>
+          <button class="btn btn-danger" [routerLink]="['/myRecordsWod',userDetails._id ]">Get all wod's records</button>
+          <br><br>
+          <div class="container">
+            <div class="content" role="main">
+              <div class="card">
+                <div class="form-group">
+                  <label for="search-text">Search Text</label>
+                  <input type="text" class="form-control" id="search-text" aria-describedby="search-text"
+                    [(ngModel)]="wodname" placeholder="Enter a wod's name" (input)="SearchWod()" autofocus/>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <!-- results of ngFor is passed to appFilter with argument searchText -->
+                  <td class="list-group-item" *ngFor="let wod of wods">
+                    <button class="btn" [routerLink]="['/wods',wod._id]">{{wod.name}}</button>
+                  </td>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+
+    </div>
+  </div>
+  <div class="col-md-6 no-gutters">
+    <div class="rightside justify-content-center align-items-center">
+
+      <h2>Weightliftings</h2>
+      <button class="btn btn-danger" [routerLink]="['/myRecordsWei',userDetails._id ]">Get all weighlitfting's records</button>
+      <div class="container">
+        <br>
+        <div class="content" role="main">
+          <div class="card">
+            <div class="form-group">
+              <label for="search-text">Search Text</label>
+              <input type="text" class="form-control" id="search-text" aria-describedby="search-text"
+                [(ngModel)]="weightliftingname" placeholder="Enter a weightlifting movement's name" (input)="SearchWei()" autofocus/>
+            </div>
+            <ul class="list-group list-group-flush">
+              <!-- results of ngFor is passed to appFilter with argument searchText -->
+              <td class="list-group-item" *ngFor="let weightlifting of weightliftings">
+                <button class="btn" [routerLink]="['/weightliftings',weightlifting._id]">{{weightlifting.name}}</button>
+              </td>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+    </div>
+</div>
+
 </div>

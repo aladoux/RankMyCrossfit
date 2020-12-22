@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const RecordWei = mongoose.model('RecordWei');
 
 module.exports.display = (req,res) => {
-    RecordWei.find((err, recordWei) => {
+    RecordWei.findBy((err, recordWei) => {
         if(err){
             console.log(err);
         }
@@ -11,6 +11,17 @@ module.exports.display = (req,res) => {
             res.json(recordWei);
         }
     })
+}
+
+module.exports.displayUserId = (req,res) => {
+    RecordWei.find({idUser: req.params.id}, (err, recordWei) => {
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.json(recordWei);
+        }
+    });
 }
 
 module.exports.displayId = (req,res) => {

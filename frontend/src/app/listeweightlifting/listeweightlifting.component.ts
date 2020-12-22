@@ -17,12 +17,20 @@ export class ListeweightliftingComponent implements OnInit {
   displayedColumns = ['name'];
   weightliftingname = "";
   token = "";
+  user;
 
   constructor(private weightliftingService: WeightliftingService, private router: Router, private userService: UserService) { }
 
   ngOnInit(){
     this.fetchWeightliftings();
     this.token = this.userService.getToken();
+    this.userService.getUserProfile().subscribe(
+      res =>{
+        this.user = res['user'];
+        console.log(this.user);
+      },
+      err =>{}
+    );
   }
 
   fetchWeightliftings(){

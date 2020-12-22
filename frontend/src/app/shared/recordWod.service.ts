@@ -9,8 +9,10 @@ export class RecordWodService {
   selectedRecordWod: RecordWod = {
   idUser: '',
   idWod: '',
+  name: '',
   record: 0,
-  state: ''
+  state: '',
+  date: new Date()
   };
 
   uri = 'http://localhost:4000/rankmycrossfit';
@@ -25,19 +27,27 @@ export class RecordWodService {
     return this.http.get(`${this.uri}/recordWod/${id}`);
   }
 
-  addRecordWod(idUser, idWod, record, state) {
+  getRecordWodByUserId(id) {
+    return this.http.get(`${this.uri}/myRecordsWod/${id}`);
+  }
+
+  addRecordWod(idUser, idWod,name, record, state, date) {
     const recordWod = {
       idUser: idUser,
       idWod: idWod,
+      name: name,
       record: record,
-      state: state
+      state: state,
+      date: date,
     };
     return this.http.post(`${this.uri}/recordWod/add`, recordWod)
   }
 
-  updateRecordWod(id,record) {
+  updateRecordWod(id,record, state, date) {
     const recordWod = {
-      record: record
+      record: record,
+      state: state,
+      date: date
     };
     return this.http.post(`${this.uri}/recordWod/update/${id}`, recordWod)
   }

@@ -30,7 +30,7 @@ router.get('/wods/remove/:id', ctrlWod.remove);
 router.post('/wods/update/:id', ctrlWod.update);
 
 /**ROUTES RECORDWEI */
-router.get('/recordWei', ctrlRecordWei.display); //get all weightlifting records
+router.get('/myRecordsWei/:id', ctrlRecordWei.displayUserId); //get all weightlifting records of the user connected
 router.get('/recordWei/:id', ctrlRecordWei.displayId); //get a weightlifting record with his id
 //router.get('/recordWei/weightlifting/:id', ctrlRecordWei.displayByWeiId); //get records for a weightlifting id passed
 //router.get('/recordWei/user/:id', ctrlRecordWei.displayByUserId); //get records of an user is passed in parameter
@@ -39,7 +39,7 @@ router.get('/recordWei/remove/:id', ctrlRecordWei.remove);
 //router.post('/recordWei/update/:id', ctrlRecordWei.update);
 
 /**ROUTES RECORDWOD */
-router.get('/recordWod', ctrlRecordWod.display); //get all wod records
+router.get('/myRecordsWod/:id', ctrlRecordWod.displayUserId); //get all wod records
 router.get('/recordWod/:id', ctrlRecordWod.displayId); //get a wod record with his id
 //router.get('/recordWod/wod/:id', ctrlRecordWod.displayByWodId); //get records for a wod id passed
 //router.get('/recordWod/user/:id', ctrlRecordWod.displayByUserId); //get records of an user is passed in parameter

@@ -9,8 +9,10 @@ export class RecordWeiService {
   selectedRecordWei: RecordWei = {
   idUser: '',
   idWei: '',
+  name: '',
   record: 0,
-  state: ''
+  state: '',
+  date: new Date()
   };
 
   uri = 'http://localhost:4000/rankmycrossfit';
@@ -25,19 +27,27 @@ export class RecordWeiService {
     return this.http.get(`${this.uri}/recordWei/${id}`);
   }
 
-  addRecordWei(idUser, idWei, record, state) {
+  getRecordWeiByUserId(id) {
+    return this.http.get(`${this.uri}/myRecordsWei/${id}`);
+  }
+
+  addRecordWei(idUser, idWei, name,record, state, date) {
     const recordWei = {
       idUser: idUser,
       idWei: idWei,
+      name: name,
       record: record,
-      state: state
+      state: state,
+      date: date
     };
     return this.http.post(`${this.uri}/recordWei/add`, recordWei)
   }
 
-  updateRecordWei(id,record) {
+  updateRecordWei(id,record,state, date) {
     const recordWei = {
-      record: record
+      record: record,
+      state: state,
+      date: date
     };
     return this.http.post(`${this.uri}/recordWei/update/${id}`, recordWei)
   }

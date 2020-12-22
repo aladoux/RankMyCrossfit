@@ -7,11 +7,17 @@ let recordWeiSchema = new mongoose.Schema({
      idWei: {
          type: String
      },
+     name: {
+        type: String
+     },
      record: {
          type: Number
      },
      state: {
          type: String
+     },
+     date: {
+         type: Date
      }
  });
 

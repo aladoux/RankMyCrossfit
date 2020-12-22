@@ -1,4 +1,6 @@
 import { Component,Input, OnInit } from '@angular/core';
+import {UserService} from '../shared/user.service';
+
 
 @Component({
   selector: 'app-menu',
@@ -7,10 +9,23 @@ import { Component,Input, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+token="";
+user;
+
+  constructor(private userService: UserService) { }
   @Input() isAuth: boolean;
   @Input() username: string;
   ngOnInit(): void {
+    this.token = this.userService.getToken();
+    if(this.token){
+      this.userService.getUserProfile().subscribe(
+        res =>{
+          this.user = res['user'];
+          console.log(this.user);
+        },
+        err =>{}
+      );
+    }
   }
 
 }

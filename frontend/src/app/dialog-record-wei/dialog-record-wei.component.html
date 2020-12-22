@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Add a record:</h1>
   <br>
-  <form #addRecordForm="ngForm" (ngSubmit)="addRecordForm.valid && onSubmit(addRecordForm)" class="col-6 ">
+  <form #addRecordForm="ngForm" (ngSubmit)="addRecordForm.valid && onSubmit(addRecordForm)" class="col-10 ">
     <div class="input-group form-group">
       <input  id="record" class="form-control" #record="ngModel" [(ngModel)]="recordWeiService.selectedRecordWei.record" name="record" type="number">kg
     </div>
@@ -13,6 +13,10 @@
     <div class="form-check-inline">
       <input class="form-check-input" id="private" value="private" type="radio" #state="ngModel" [(ngModel)]="recordWeiService.selectedRecordWei.state" name="state">
       <label id="privateLabel" class="form-check-label" for="private">Private</label>
+    </div>
+
+    <div class="input-group form-group" id="datepicker">
+      <input class="form-control" type="date" #date="ngModel" [(ngModel)]="recordWeiService.selectedRecordWei.date" name="date" placeholder="Date">
     </div>
 
       <br>

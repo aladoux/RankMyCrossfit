@@ -11,6 +11,9 @@ import { WeightliftingDisplayComponent } from './weightliftingdisplay/weightlift
 import { LoginPageComponent} from './login-page/login-page.component';
 import { ModifyWodFormComponent } from './modifywod/modifywodform.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { ListRecordWeiComponent } from './list-record-wei/list-record-wei.component';
+import { ListRecordWodComponent } from './list-record-wod/list-record-wod.component';
+
 import {AuthGuard} from './auth/auth.guard';
 
 export const appRoutes: Routes = [
@@ -52,5 +55,11 @@ export const appRoutes: Routes = [
   },
   {
     path: 'userprofile' , component: UserProfileComponent, canActivate: [AuthGuard]
-  }
+  },
+  {
+    path: 'myRecordsWei/:id' , component: ListRecordWeiComponent
+  },
+  {
+    path: 'myRecordsWod/:id' , component: ListRecordWodComponent
+  },
 ];

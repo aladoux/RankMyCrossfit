@@ -7,12 +7,18 @@ let recordWodSchema = new mongoose.Schema({
      idWod: {
          type: String
      },
+     name: {
+        type: String
+     },
      record: {
          type: Number
      },
      state: {
          type: String
-     }
+     },
+     date: {
+        type: Date
+    }
  });
 
  mongoose.model('RecordWod', recordWodSchema);
