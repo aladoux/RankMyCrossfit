@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { RecordWodService } from '../shared/recordWod.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import {UserService} from '../shared/user.service';
 import {RecordWod} from '../shared/recordWod.model';
+import {DialogModifyRecordWodComponent } from '../dialog-modify-record-wod/dialog-modify-record-wod.component';
+
 
 @Component({
   selector: 'app-list-record-wod',
@@ -15,7 +18,7 @@ export class ListRecordWodComponent implements OnInit {
   user;
   userId;
 
-  constructor(private userService: UserService,private recordWodService: RecordWodService, private router: Router, private acRoute: ActivatedRoute) { }
+  constructor(private dialog: MatDialog,private userService: UserService,private recordWodService: RecordWodService, private router: Router, private acRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.acRoute.params.subscribe(params => {
@@ -44,6 +47,11 @@ export class ListRecordWodComponent implements OnInit {
     this.recordWodService.deleteRecordWod(id).subscribe(() => {
       this.fetchRecords();
     });
+  }
+
+  openDialog(record): void {
+    let dialo = this.dialog.open(DialogModifyRecordWodComponent);
+    dialo.componentInstance.recordWod = record;
   }
 
 }

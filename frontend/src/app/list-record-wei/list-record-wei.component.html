@@ -8,6 +8,7 @@
           <label> {{record.name}} </label>
           <label> {{record.record}} kg </label>
           <label> {{record.date}} </label>
+          <label>{{record.state}}</label>
           <button class="btn btn-warning" (click)="openDialog(record)">Modify</button>
           <button class="btn btn-danger" (click)="deleteRecordWei(record._id)" >Delete</button>
         </td>

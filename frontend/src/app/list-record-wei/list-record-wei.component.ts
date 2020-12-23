@@ -49,10 +49,9 @@ userId;
     });
   }
 
-  openDialog(id, name): void {
+  openDialog(record): void {
     let dialo = this.dialog.open(DialogModifyRecordWeiComponent);
-    dialo.componentInstance.idWei = id;
-    dialo.componentInstance.name = name;
+    dialo.componentInstance.recordWei = record;
   }
 
 }

@@ -8,7 +8,8 @@
           <label> {{record.name}} </label>
           <label> {{record.record}} min </label>
           <label> {{record.date}} </label>
-          <button class="btn btn-warning" [routerLink]="['/weightliftings/modify',weightlifting._id]">Modify</button>
+          <label>{{record.state}}</label>
+          <button class="btn btn-warning" (click)="openDialog(record)">Modify</button>
           <button class="btn btn-danger" (click)="deleteRecordWod(record._id)" >Delete</button>
         </td>
       </ul>
