@@ -13,16 +13,9 @@
     <table class="table" formArrayName="exercises">
       <tr>
         <th colspan="2">Add exercise:</th>
-        <th width="150px"><button type="button" (click)="addExistingWeightlifting()" class="btn btn-primary">Add existing weightlifting</button></th>
-
-        <th width="150px"><button type="button" (click)="addExercise()" class="btn btn-primary">Add simple exercise</button></th>
+        <th width="150px"><button type="button" (click)="addExercise()" class="btn btn-primary">Add exercise</button></th>
       </tr>
       <tr *ngFor="let exercise of exercises().controls; let i=index" [formGroupName]="i">
-        <td>
-            Name:
-            <input type="text" formControlName="exoName" class="form-control">
-
-        </td>
         <td>
           Name:
           <select class="form-control" formControlName="list">
@@ -30,24 +23,22 @@
             </select>
         </td>
         <td>
-            Weight (kg):
-            <input type="text" formControlName="weight" class="form-control">
+          Quantity:
+          <input type="number" formControlName="nbOfRep" class="form-control">
         </td>
         <td>
-          Number of rep:
-          <input type="text" formControlName="nbOfRep" class="form-control">
+            Unity:
+            <select class="form-control" formControlName="list">
+              <option *ngFor="let unity of this.unities" [value]="unity">{{ unity }}</option>
+            </select>
         </td>
         <td>
-          Time:
-          <input type="text" formControlName="time" class="form-control">
+          Weight:
+          <input id="weight" type="number" formControlName="weight" class="form-control" >
         </td>
-        <td>
-          Number of Kcal:
-          <input type="text" formControlName="kcal" class="form-control">
-        </td>
-        <td>
-          Distance (Km):
-          <input type="text" formControlName="distance" class="form-control">
+        <td id="kg">
+          <br>
+          <label>kg</label>
         </td>
         <td>
             <button (click)="removeExercise(i)" class="btn btn-danger">Remove</button>

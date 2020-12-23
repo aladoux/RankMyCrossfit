@@ -41,7 +41,7 @@ fetchWod(){
         console.log('Data requested ...');
         console.log(this.wod);
         for(let ex of this.exos){
-          this.exercises().push(this.existExercise(ex.exoName, ex.weight, ex.nbOfRep, ex.time, ex.kcal, ex.distance));
+          this.exercises().push(this.existExercise(ex.exoId, ex.weight, ex.nbOfRep, ex.time, ex.kcal, ex.distance));
         }
       });
   }
@@ -58,9 +58,9 @@ fetchWod(){
     return this.productForm.get("exercises") as FormArray
   }
 
-  existExercise(exoN, wei, nbOfR, tim, kcal, distance): FormGroup {
+  existExercise(exoId, wei, nbOfR, tim, kcal, distance): FormGroup {
     return this.fb.group({
-      exoName: [exoN, Validators.required],
+      exoName: [exoId, Validators.required],
       weight: wei,
       nbOfRep: nbOfR,
       time: tim,
@@ -71,7 +71,8 @@ fetchWod(){
 
   newExercise(): FormGroup {
     return this.fb.group({
-      exoName: ['', Validators.required],
+      exoId: ['', Validators.required],
+      status: '',
       weight: '',
       nbOfRep: '',
       time: '',

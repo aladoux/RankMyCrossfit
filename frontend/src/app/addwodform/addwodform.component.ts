@@ -4,6 +4,7 @@ import { FormGroup,FormControl, FormArray, FormBuilder, Validators } from '@angu
 import {WodService} from '../shared/wod.service';
 import {WeightliftingService} from '../shared/weightlifting.service';
 import {Weightlifting} from '../shared/weightlifting.model';
+import {HttpClient} from '@angular/common/http';
 
 
 @Component({
@@ -12,10 +13,13 @@ import {Weightlifting} from '../shared/weightlifting.model';
   templateUrl: './addwodform.component.html'
 })
 export class AddWodFormComponent implements OnInit{
+  apiUrl = "https://wger.de/api/v2/exercice/ -H 'Authorization: Token 6559b40ffd902842b597819d2316a8cc4030eba6'";
   weightliftings: Weightlifting[];
+  unities = ["kilometers", "repetitions", "minutes", "seconds", "calories"];
+  exoApi;
   productForm: FormGroup;
 
-  constructor(private fb:FormBuilder,private weightliftingService: WeightliftingService, private wodService: WodService, private router: Router) {
+  constructor(private _http: HttpClient,private fb:FormBuilder,private weightliftingService: WeightliftingService, private wodService: WodService, private router: Router) {
     this.productForm = this.fb.group({
       name: ['', Validators.required],
       exercises: this.fb.array([]) ,
@@ -30,6 +34,7 @@ export class AddWodFormComponent implements OnInit{
 
   ngOnInit(): void {
     this.fetchWeightliftings();
+    this.fetchExoApi();
   }
 
 
@@ -43,6 +48,12 @@ export class AddWodFormComponent implements OnInit{
       });
   }
 
+  fetchExoApi(){
+    this.exoApi = this._http.get(this.apiUrl);
+    console.log(this.exoApi);
+    //curl -X GET https://wger.de/api/v2/workout/ \-H 'Authorization: Token 6559b40ffd902842b597819d2316a8cc4030eba6';
+  }
+
 
 
   exercises() : FormArray {
@@ -51,27 +62,15 @@ export class AddWodFormComponent implements OnInit{
 
   newExercise(): FormGroup {
     return this.fb.group({
-      exoName: ['', Validators.required],
+      exoId: ['', Validators.required],
+      type: 's',
       list:[''],
       weight: '',
       nbOfRep: '',
       time: '',
       kcal: '',
       distance: '',
-      type: 's' //s for simple
-    })
-  }
 
-  newExistingWeightlifting(): FormGroup {
-    return this.fb.group({
-      exoName:['',],
-      list:'',
-      weight: '',
-      nbOfRep: '',
-      time: '',
-      kcal: '',
-      distance: '',
-      type: 'cw', //cw for created weightlifting
     })
   }
 
@@ -79,10 +78,6 @@ export class AddWodFormComponent implements OnInit{
     this.exercises().push(this.newExercise());
   }
 
-  addExistingWeightlifting() {
-
-    this.exercises().push(this.newExistingWeightlifting());
-  }
 
   removeExercise(i:number) {
     this.exercises().removeAt(i);

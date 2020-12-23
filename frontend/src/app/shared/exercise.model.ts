@@ -1,7 +1,6 @@
 export interface Exercise{
+  exoId: String,
   type: String,
-  id: String,
-  exoName: String,
   distance: String,
   kcal: String,
   nbOfRep: String,
