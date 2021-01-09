@@ -34,6 +34,10 @@ export class RecordWodService {
     return this.http.get(`${this.uri}/recordWod/publicman/${id}`);
   }
 
+  getRecordByUserWodId(idUser, idWod) {
+    return this.http.get(`${this.uri}/recordWod/wod/${idUser}/${idWod}`);
+  }
+
   getRecordWodById(id) {
     return this.http.get(`${this.uri}/recordWod/${id}`);
   }

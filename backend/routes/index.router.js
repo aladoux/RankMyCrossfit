@@ -41,11 +41,12 @@ router.get('/recordWei/remove/:id', ctrlRecordWei.remove);
 router.post('/recordWei/update/:id', ctrlRecordWei.update);
 
 /**ROUTES RECORDWOD */
+router.get('/recordWod/wod/:idUser/:idWod', ctrlRecordWod.displayByWodUserId);
+
 router.get('/myRecordsWod/:id', ctrlRecordWod.displayUserId); //get all wod records
 router.get('/recordWod/:id', ctrlRecordWod.displayId); //get a wod record with his id
 router.get('/recordWod/publicman/:id', ctrlRecordWod.displayPublicMan);
 router.get('/recordWod/publicwoman/:id', ctrlRecordWod.displayPublicWoman);
-router.get('/recordWod/wod/:idUser/:idWei', ctrlRecordWod.displayByWodUserId);
 router.get('/recordWod/wod/:id', ctrlRecordWod.displayPublicByWodId); //get public records for a wod id passed
 //router.get('/recordWod/user/:id', ctrlRecordWod.displayByUserId); //get records of an user is passed in parameter
 router.post('/recordWod/add', ctrlRecordWod.add);

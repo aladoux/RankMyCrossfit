@@ -1,1 +1,69 @@
-<p>user-records-graph-wod works!</p>
+<div class="container">
+  <h2 *ngIf="this.wod">{{wod.name}}</h2>
+  <table id="tab" class="table">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Unity</th>
+        <th scope="col">Weight</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let exo of this.exercises;">
+        <td>
+          <button class="btn" (click)="openDialogExo(exo.objectExo)">{{exo.objectExo.name }}</button>
+        </td>
+        <td>
+          <label> {{exo.quantity}}</label>
+        </td>
+        <td>
+          <label> {{exo.listeUnit}}</label>
+        </td>
+        <td>
+          <label> {{exo.weight}}</label>
+        </td>
+        <td>
+          <label>kg</label>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-center align-items-center">
+    <button *ngIf="this.token" id="addRecord" class="btn btn-success" (click)="openDialog(this.idWod, this.wod.name)">Add record </button>
+  </div>
+
+  <br>
+  <h2 *ngIf="this.wod">My records for {{wod.name}}</h2>
+  <div class="content" role="main">
+    <div class="card">
+      <ul class="list-group list-group-flush">
+        <!-- results of ngFor is passed to appFilter with argument searchText -->
+        <td class="list-group-item" *ngFor="let record of recordWod">
+          <label> {{record.name}} </label>
+          <label> {{record.record}} min </label>
+          <label> {{record.date}} </label>
+          <label>{{record.state}}</label>
+          <button class="btn btn-warning" (click)="openDialogMod(record)">Modify</button>
+          <button class="btn btn-danger" (click)="deleteRecordWod(record._id)" >Delete</button>
+        </td>
+      </ul>
+    </div>
+  </div>
+
+  <br>
+  <h2 *ngIf="this.recordWod"> My performance graph</h2>
+  <div>
+    <div style="display: block;">
+      <!--<canvas chart
+        [datasets]="recordData"
+        [labels]="recordLabels"
+        [options]="recordOption"
+        [legend]="recordLegend"
+        [chartType]="barChartType">
+      </canvas>-->
+    </div>
+  </div>
+
+</div>
