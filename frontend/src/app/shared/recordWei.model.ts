@@ -5,5 +5,7 @@ export interface RecordWei{
   name: String
   record: Number,
   state: String, //public or private
-  date: Date
+  date: Date,
+  sexe: String,
+  nameUs: String,
 }

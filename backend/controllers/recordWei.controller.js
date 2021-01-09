@@ -35,6 +35,39 @@ module.exports.displayId = (req,res) => {
     });
 }
 
+module.exports.displayPublicWoman = (req,res) => {
+    RecordWei.find({idWei: req.params.id, state: "public", sexe:"woman"}, (err, recordWei) => {
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.json(recordWei);
+        }
+    }).sort({"record":-1});
+}
+
+module.exports.displayPublicMan = (req,res) => {
+    RecordWei.find({idWei: req.params.id, state: "public", sexe:"man"}, (err, recordWei) => {
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.json(recordWei);
+        }
+    }).sort({"record":-1});
+}
+
+module.exports.displayByWeiUserId = (req, res) => {
+ RecordWei.find({idUser: req.params.idUser, idWei: req.params.idWei}, (err, recordWei) => {
+    if(err){
+        console.log(err);
+    }
+    else{
+        res.json(recordWei);
+    }
+ }); 
+}
+
 
 module.exports.add = (req, res) => {
     let recordWei = new RecordWei(req.body);
@@ -73,3 +106,5 @@ module.exports.remove = (req, res) => {
         }
     })
 }
+
+

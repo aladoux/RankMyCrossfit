@@ -6,6 +6,8 @@ import {ActivatedRoute} from '@angular/router';
 import {Weightlifting} from '../shared/weightlifting.model';
 import {DialogRecordWeiComponent} from '../dialog-record-wei/dialog-record-wei.component';
 import {UserService} from '../shared/user.service';
+import {RecordWei} from '../shared/recordWei.model';
+import {RecordWeiService} from '../shared/recordWei.service';
 
 
 
@@ -20,15 +22,21 @@ export class WeightliftingDisplayComponent implements OnInit {
   id: String;
   record: Number;
   token = "";
+  records: RecordWei[] = [];
+  recordsMen: RecordWei[] = [];
+  recordsWomen : RecordWei[] = [];
 
-  constructor(private dialog: MatDialog,private weightliftingService: WeightliftingService, private router: ActivatedRoute,private userService: UserService) { }
+  constructor(private dialog: MatDialog,private recordWeiService: RecordWeiService,private weightliftingService: WeightliftingService, private router: ActivatedRoute,private userService: UserService) { }
 
   ngOnInit(){
    this.router.params.subscribe(params => {
     this.id = params['id'];
     });
    this.fetchWeightlifting();
+   this.fetchRecordWeiManPublic();
+   this.fetchRecordWeiWomanPublic();
    this.token = this.userService.getToken();
+   console.log("dede", this.recordsMen);
   }
 
   fetchWeightlifting(){
@@ -38,6 +46,24 @@ export class WeightliftingDisplayComponent implements OnInit {
         this.weightlifting = data;
         console.log('Data requested ...');
         console.log(this.weightlifting);
+      });
+  }
+
+  fetchRecordWeiManPublic(){
+    this.recordWeiService
+      .getRecordManPublic(this.id)
+      .subscribe((data: RecordWei[]) => {
+        this.recordsMen = data;
+        console.log('Data requested ...');
+      });
+  }
+
+  fetchRecordWeiWomanPublic(){
+    this.recordWeiService
+      .getRecordWomanPublic(this.id)
+      .subscribe((data: RecordWei[]) => {
+        this.recordsWomen = data;
+        console.log('Data requested ...');
       });
   }
 

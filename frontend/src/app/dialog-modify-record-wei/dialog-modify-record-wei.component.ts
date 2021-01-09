@@ -48,7 +48,9 @@ export class DialogModifyRecordWeiComponent implements OnInit {
       name: '',
       record: 0,
       state: '',
-      date: new Date()
+      date: new Date(),
+      sexe: '',
+      nameUs: ''
     };
     form.resetForm();
     this.serverErrorMessages = '';

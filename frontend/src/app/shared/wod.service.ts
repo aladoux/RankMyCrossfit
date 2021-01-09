@@ -35,6 +35,6 @@ export class WodService {
   }
 
   deleteWod(id){
-    return this.http.get(`${this.uri}/wods/delete/${id}`);
+    return this.http.get(`${this.uri}/wods/remove/${id}`);
   }
 }

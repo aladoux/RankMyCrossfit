@@ -13,7 +13,9 @@ export class RecordWodService {
   name: '',
   record: 0,
   state: '',
-  date: new Date()
+  date: new Date(),
+  sexe: '',
+  nameUs: ''
   };
 
   uri = 'http://localhost:4000/rankmycrossfit';
@@ -24,6 +26,14 @@ export class RecordWodService {
     return this.http.get(`${this.uri}/recordWod`);
   }
 
+  getRecordWomanPublic(id){
+    return this.http.get(`${this.uri}/recordWod/publicwoman/${id}`)
+  }
+
+  getRecordManPublic(id) {
+    return this.http.get(`${this.uri}/recordWod/publicman/${id}`);
+  }
+
   getRecordWodById(id) {
     return this.http.get(`${this.uri}/recordWod/${id}`);
   }
@@ -32,7 +42,7 @@ export class RecordWodService {
     return this.http.get(`${this.uri}/myRecordsWod/${id}`);
   }
 
-  addRecordWod(idUser, idWod,name, record, state, date) {
+  addRecordWod(idUser, idWod,name, record, state, date, sexe, nameUs) {
     const recordWod = {
       idUser: idUser,
       idWod: idWod,
@@ -40,6 +50,8 @@ export class RecordWodService {
       record: record,
       state: state,
       date: date,
+      sexe: sexe,
+      nameUs: nameUs
     };
     return this.http.post(`${this.uri}/recordWod/add`, recordWod)
   }

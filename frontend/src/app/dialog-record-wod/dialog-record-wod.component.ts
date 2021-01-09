@@ -32,7 +32,7 @@ export class DialogRecordWodComponent implements OnInit {
 
   onSubmit(form: NgForm){
     console.log(form.value);
-    this.recordWodService.addRecordWod(this.userDetails._id,this.idWod,this.name,form.value.record,form.value.state, form.value.date).subscribe(
+    this.recordWodService.addRecordWod(this.userDetails._id,this.idWod,this.name,form.value.record,form.value.state, form.value.date, this.userDetails.sexe, this.userDetails.username).subscribe(
       res => {
         this.resetForm(form);
         this.formisvalid = true;
@@ -54,7 +54,9 @@ export class DialogRecordWodComponent implements OnInit {
       name: '',
       record: 0,
       state: '',
-      date: new Date()
+      date: new Date(),
+      sexe: '',
+      nameUs: ''
     };
     form.resetForm();
     this.serverErrorMessages = '';

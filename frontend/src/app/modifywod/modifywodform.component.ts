@@ -5,6 +5,10 @@ import {WodService} from '../shared/wod.service';
 import {ActivatedRoute} from '@angular/router';
 import {Wod} from '../shared/wod.model';
 import {Exercise} from '../shared/exercise.model';
+import {Weightlifting} from '../shared/weightlifting.model';
+import {WeightliftingService} from '../shared/weightlifting.service';
+import {HttpClient} from '@angular/common/http';
+import {ExerciceApi} from '../shared/exerciceApi.model';
 
 
 
@@ -14,11 +18,27 @@ import {Exercise} from '../shared/exercise.model';
   templateUrl: './modifywodform.component.html'
 })
 export class ModifyWodFormComponent implements OnInit{
-  wod: Wod;
-  exos: Exercise[];
-  id: String;
+  apiUrl = "https://wger.de/api/v2/exercise.json/";
+  weightliftings: Weightlifting[]; // tab des mouv weight
+  unities = ["kilometers", "repetitions", "minutes", "seconds", "calories"];
+  exoApi; //json des mouv api
+  exoApiNames: String[]= [];
   productForm: FormGroup;
+  exercices : ExerciceApi[] = [];
+  id: String;
+  wod: Wod;
+  exos: Exercise[] = [];
 
+constructor(private _http: HttpClient,private fb:FormBuilder,private weightliftingService: WeightliftingService, private wodService: WodService, private route: Router, private router: ActivatedRoute) {
+    this.productForm = this.fb.group({
+      name: ['', Validators.required],
+      exercises: this.fb.array([]) ,
+    });
+  }
+
+exercises() : FormArray {
+    return this.productForm.get("exercises") as FormArray
+  }
 
 onBack(){
   this.route.navigate(['/wods']);
@@ -29,7 +49,38 @@ ngOnInit(): void {
   this.router.params.subscribe(params => {
     this.id = params['id'];
     });
-   this.fetchWod();
+    this.fetchWeightliftings();
+    this.fetchExoApi();
+    this.fetchWod();
+}
+
+fetchWeightliftings(){
+  this.weightliftingService
+    .getWeightliftings()
+    .subscribe((data: Weightlifting[]) => {
+      this.weightliftings = data;
+      console.log(this.weightliftings);
+      for(let i=0;i<this.weightliftings.length;i++){
+        const exercice : ExerciceApi = {name: this.weightliftings[i].name, desc: this.weightliftings[i].desc};
+        this.exercices.push(exercice);
+      }
+      console.log(this.exercices);
+    });
+}
+
+fetchExoApi(){
+  this._http.get(this.apiUrl).subscribe(res => {
+    this.exoApi = JSON.stringify(res);
+    const exoApiParse = JSON.parse(this.exoApi);
+    const exoApiResults = exoApiParse.results;
+    console.log(exoApiResults);
+    for(let i=0;i<exoApiResults.length;i++){
+      const exercice : ExerciceApi = {name: exoApiResults[i].name, desc: exoApiResults[i].description};
+      this.exercices.push(exercice);
+    }
+    console.log(this.exercices);
+  });
+
 }
 
 fetchWod(){
@@ -38,46 +89,30 @@ fetchWod(){
       .subscribe((data: Wod) => {
         this.wod = data;
         this.exos = data.exercises;
-        console.log('Data requested ...');
-        console.log(this.wod);
+        console.log("dede",this.exos);
         for(let ex of this.exos){
-          this.exercises().push(this.existExercise(ex.exoId, ex.weight, ex.nbOfRep, ex.time, ex.kcal, ex.distance));
+          //const exo : ExerciceApi = {name: ex.objectExo.name, desc: ex.objectExo.desc};
+          this.exercises().push(this.existExercise(ex.objectExo, ex.quantity,ex.listeUnit,ex.weight));
         }
       });
+
   }
 
-
-  constructor(private fb:FormBuilder, private wodService: WodService,private route: Router, private router: ActivatedRoute) {
-    this.productForm = this.fb.group({
-      name: ['', Validators.required],
-      exercises: this.fb.array([]) ,
-    });
-  }
-
-  exercises() : FormArray {
-    return this.productForm.get("exercises") as FormArray
-  }
-
-  existExercise(exoId, wei, nbOfR, tim, kcal, distance): FormGroup {
+  existExercise(objectExo, quantity, unit, wei): FormGroup {
     return this.fb.group({
-      exoName: [exoId, Validators.required],
+      objectExo: objectExo,
+      quantity: quantity,
+      listeUnit: unit,
       weight: wei,
-      nbOfRep: nbOfR,
-      time: tim,
-      kcal: kcal,
-      distance: distance,
     })
   }
 
   newExercise(): FormGroup {
     return this.fb.group({
-      exoId: ['', Validators.required],
-      status: '',
+      objectExo: ['', Validators.required],
+      quantity: '',
+      listeUnit: '',
       weight: '',
-      nbOfRep: '',
-      time: '',
-      kcal: '',
-      distance: '',
     })
   }
 
@@ -90,6 +125,9 @@ fetchWod(){
   }
 
   onModifyWod() {
+    for(let exo of (this.productForm.value.exercises)){
+      exo.objectExo = JSON.parse(exo.objectExo);
+    }
     this.wodService.updateWod(this.id,this.productForm.value.name, this.productForm.value.exercises).subscribe(() => {
       this.route.navigate(['/wods']);
     });

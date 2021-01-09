@@ -1,9 +1,8 @@
+import { ExerciceApi } from "./exerciceApi.model";
+
 export interface Exercise{
-  exoId: String,
-  type: String,
-  distance: String,
-  kcal: String,
-  nbOfRep: String,
-  time: String,
-  weight: String
+  objectExo: ExerciceApi,
+  weight: Number,
+  listeUnit: String,
+  quantity: Number,
 }

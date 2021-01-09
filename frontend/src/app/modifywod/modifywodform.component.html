@@ -2,42 +2,43 @@
 
   <h1>Wod</h1>
 
-  <form [formGroup]="productForm" >
+  <div id="newRow"></div>
+  <form [formGroup]="productForm" *ngIf="productForm && this.wod" >
 
     <p>
       <label for="name">Wod Name:</label>
-      <input [(ngModel)]="this.wod.name" type="text" id="name" name="name" formControlName="name" class="form-control">
+      <input *ngIf="this.wod" [(ngModel)]="this.wod.name" type="text" id="name" name="name" formControlName="name" class="form-control">
     </p>
 
     <table class="table" formArrayName="exercises">
       <tr>
         <th colspan="2">Add exercise:</th>
-        <th width="150px"><button type="button" (click)="addExercise()" class="btn btn-primary">Add More</button></th>
+        <th width="150px"><button type="button" (click)="addExercise()" class="btn btn-primary">Add exercise</button></th>
       </tr>
       <tr *ngFor="let exercise of exercises().controls; let i=index" [formGroupName]="i">
         <td>
-            Exercise Name:
-            <input type="text" formControlName="exoName" class="form-control">
+          Name:
+          <select class="form-control" name="objectExo"  formControlName="objectExo">
+              <option *ngFor="let exercice of this.exercices"  [value]="exercice | json">{{ exercice.name }}</option>
+            </select>
         </td>
         <td>
-            Weight (kg):
-            <input type="text" formControlName="weight" class="form-control">
+          Quantity:
+          <input id="quantity" type="number" name="quantity" formControlName="quantity" class="form-control">
         </td>
         <td>
-          Number of rep:
-          <input type="text" formControlName="nbOfRep" class="form-control">
+            Unity:
+            <select class="form-control" name="listeUnit" formControlName="listeUnit">
+              <option *ngFor="let unity of this.unities" [value]="unity">{{ unity }}</option>
+            </select>
         </td>
         <td>
-          Time:
-          <input type="text" formControlName="time" class="form-control">
+          Weight:
+          <input id="weight" type="number" formControlName="weight" class="form-control" >
         </td>
-        <td>
-          Number of Kcal:
-          <input type="text" formControlName="kcal" class="form-control">
-        </td>
-        <td>
-          Distance (Km):
-          <input type="text" formControlName="distance" class="form-control">
+        <td id="kg">
+
+          <label>kg</label>
         </td>
         <td>
             <button (click)="removeExercise(i)" class="btn btn-danger">Remove</button>
@@ -46,7 +47,7 @@
     </table>
 
   </form>
-
+  {{this.productForm.value | json}}
   <br/>
 
 

@@ -33,7 +33,6 @@ export class ListewodComponent implements OnInit {
       },
       err =>{}
     );
-    console.log(this.user.mail);
   }
 
   fetchWods(){

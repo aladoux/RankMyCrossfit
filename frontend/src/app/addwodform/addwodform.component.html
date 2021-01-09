@@ -18,17 +18,17 @@
       <tr *ngFor="let exercise of exercises().controls; let i=index" [formGroupName]="i">
         <td>
           Name:
-          <select class="form-control" formControlName="list">
-              <option *ngFor="let weightlifting of this.weightliftings" [value]="weightlifting.name">{{ weightlifting.name }}</option>
+          <select class="form-control" name="objectExo"  formControlName="objectExo">
+              <option *ngFor="let exercice of this.exercices"  [value]="exercice | json">{{ exercice.name }}</option>
             </select>
         </td>
         <td>
           Quantity:
-          <input type="number" formControlName="nbOfRep" class="form-control">
+          <input id="quantity" type="number" name="quantity" formControlName="quantity" class="form-control">
         </td>
         <td>
             Unity:
-            <select class="form-control" formControlName="list">
+            <select class="form-control" name="listeUnit" formControlName="listeUnit">
               <option *ngFor="let unity of this.unities" [value]="unity">{{ unity }}</option>
             </select>
         </td>
@@ -37,7 +37,7 @@
           <input id="weight" type="number" formControlName="weight" class="form-control" >
         </td>
         <td id="kg">
-          <br>
+
           <label>kg</label>
         </td>
         <td>
@@ -47,7 +47,7 @@
     </table>
 
   </form>
-
+  <!--{{this.productForm.value | json}}-->
   <br/>
 
 

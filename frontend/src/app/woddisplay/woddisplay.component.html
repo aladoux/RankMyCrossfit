@@ -1,37 +1,32 @@
 <div class="container">
 
-<h1>{{wod.name}}</h1>
+<h1 *ngIf="this.wod">{{wod.name}}</h1>
 <br>
 <table id="tab" class="table">
   <thead>
     <tr>
       <th scope="col">Name</th>
-      <th scope="col">Distance (Km)</th>
-      <th scope="col">Kcal</th>
-      <th scope="col">Number of Rep</th>
-      <th scope="col">Time</th>
-      <th scope="col">Weight (Kg)</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Unity</th>
+      <th scope="col">Weight</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let exo of this.exercises;">
       <td>
-        <label>{{exo.exoName}}</label>
+        <button class="btn" (click)="openDialogExo(exo.objectExo)">{{exo.objectExo.name }}</button>
       </td>
       <td>
-        <label> {{exo.distance}}</label>
+        <label> {{exo.quantity}}</label>
       </td>
       <td>
-        <label> {{exo.kcal}}</label>
-      </td>
-      <td>
-        <label> {{exo.nbOfRep}}</label>
-      </td>
-      <td>
-        <label> {{exo.time}}</label>
+        <label> {{exo.listeUnit}}</label>
       </td>
       <td>
         <label> {{exo.weight}}</label>
+      </td>
+      <td>
+        <label>kg</label>
       </td>
     </tr>
   </tbody>
@@ -45,13 +40,56 @@
   <div class="col-md-6 no-gutters">
     <div class="leftside d-flex justify-content-center align-items-center">
           <h2>Men Records</h2>
-          <table></table>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col"> User</th>
+                <th scope="col"> Date </th>
+                <th scope="col"> Record </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let record of this.recordsMen;">
+                <td>
+                  <label> {{record.nameUs}}</label>
+                </td>
+                <td>
+                  <label> {{record.date}}</label>
+                </td>
+                <td>
+                  <label> {{record.record}}</label>
+                </td>
+              </tr>
+            </tbody>
+          </table>
     </div>
   </div>
   <div class="col-md-6 no-gutters">
     <div class="rightside d-flex justify-content-center align-items-center">
       <h2>Women Records</h2>
-      <table></table>
+      <br>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"> User</th>
+            <th scope="col"> Date </th>
+            <th scope="col"> Record </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let record of this.recordsWomen;">
+            <td>
+              <label> {{record.nameUs}}</label>
+            </td>
+            <td>
+              <label> {{record.date}}</label>
+            </td>
+            <td>
+              <label> {{record.record}}</label>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     </div>
 </div>

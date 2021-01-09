@@ -42,6 +42,9 @@ import { ListRecordWeiComponent } from './list-record-wei/list-record-wei.compon
 import { ListRecordWodComponent } from './list-record-wod/list-record-wod.component';
 import { DialogModifyRecordWodComponent } from './dialog-modify-record-wod/dialog-modify-record-wod.component';
 import { DialogModifyRecordWeiComponent } from './dialog-modify-record-wei/dialog-modify-record-wei.component';
+import { DialogDisplayExerciseComponent } from './dialog-display-exercise/dialog-display-exercise.component';
+import { UserRecordsGraphComponent } from './user-records-graph/user-records-graph.component';
+import { UserRecordsGraphWodComponent } from './user-records-graph-wod/user-records-graph-wod.component';
 
 
 @NgModule({
@@ -67,6 +70,9 @@ import { DialogModifyRecordWeiComponent } from './dialog-modify-record-wei/dialo
     ListRecordWodComponent,
     DialogModifyRecordWodComponent,
     DialogModifyRecordWeiComponent,
+    DialogDisplayExerciseComponent,
+    UserRecordsGraphComponent,
+    UserRecordsGraphWodComponent,
   ],
   entryComponents: [
     DialogRecordWeiComponent,

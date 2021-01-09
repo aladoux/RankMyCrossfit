@@ -25,14 +25,13 @@ export class AddWeightliftingFormComponent implements OnInit{
 
     this.productForm = this.fb.group({
       name: ['', Validators.required],
-      desc: [''],
-      tips: ['']
+      desc: ['']
     });
   }
 
 
   onAddWeightlifting() {
-    this.weightliftingService.addWeightlifting(this.productForm.value.name, this.productForm.value.desc,this.productForm.value.tips).subscribe(() => {
+    this.weightliftingService.addWeightlifting(this.productForm.value.name, this.productForm.value.desc).subscribe(() => {
       this.router.navigate(['/weightliftings']);
     });
     console.log(this.productForm.value);

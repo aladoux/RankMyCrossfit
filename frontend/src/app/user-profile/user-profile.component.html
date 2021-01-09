@@ -42,7 +42,7 @@
     <div class="leftside justify-content-center align-items-center">
 
           <h2>Wods</h2>
-          <button class="btn btn-danger" [routerLink]="['/myRecordsWod',userDetails._id ]">Get all wod's records</button>
+          <button class="btn btn-danger" *ngIf="this.userDetails" [routerLink]="['/myRecordsWod',userDetails._id ]">Get all wod's records</button>
           <br><br>
           <div class="container">
             <div class="content" role="main">
@@ -55,13 +55,12 @@
                 <ul class="list-group list-group-flush">
                   <!-- results of ngFor is passed to appFilter with argument searchText -->
                   <td class="list-group-item" *ngFor="let wod of wods">
-                    <button class="btn" [routerLink]="['/wods',wod._id]">{{wod.name}}</button>
+                    <button *ngIf="this.userDetails && this.wod" class="btn" [routerLink]="['/wods/',userDetails._id,wod._id]">{{wod.name}}</button>
                   </td>
                 </ul>
               </div>
             </div>
           </div>
-
 
     </div>
   </div>
@@ -69,7 +68,7 @@
     <div class="rightside justify-content-center align-items-center">
 
       <h2>Weightliftings</h2>
-      <button class="btn btn-danger" [routerLink]="['/myRecordsWei',userDetails._id ]">Get all weighlitfting's records</button>
+      <button class="btn btn-danger" *ngIf="this.userDetails" [routerLink]="['/myRecordsWei',userDetails._id ]">Get all weighlitfting's records</button>
       <div class="container">
         <br>
         <div class="content" role="main">
@@ -82,7 +81,7 @@
             <ul class="list-group list-group-flush">
               <!-- results of ngFor is passed to appFilter with argument searchText -->
               <td class="list-group-item" *ngFor="let weightlifting of weightliftings">
-                <button class="btn" [routerLink]="['/weightliftings',weightlifting._id]">{{weightlifting.name}}</button>
+                <button *ngIf="userDetails && weightlifting" class="btn" [routerLink]="['/weightliftings/',userDetails._id,weightlifting._id]">{{weightlifting.name}}</button>
               </td>
             </ul>
           </div>

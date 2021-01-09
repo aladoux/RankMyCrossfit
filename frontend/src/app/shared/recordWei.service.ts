@@ -13,7 +13,9 @@ export class RecordWeiService {
   name: '',
   record: 0,
   state: '',
-  date: new Date()
+  date: new Date(),
+  sexe: '',
+  nameUs: ''
   };
 
   uri = 'http://localhost:4000/rankmycrossfit';
@@ -24,6 +26,14 @@ export class RecordWeiService {
     return this.http.get(`${this.uri}/recordWei`);
   }
 
+  getRecordWomanPublic(id){
+    return this.http.get(`${this.uri}/recordWei/publicwoman/${id}`)
+  }
+
+  getRecordManPublic(id) {
+    return this.http.get(`${this.uri}/recordWei/publicman/${id}`);
+  }
+
   getRecordWeiById(id) {
     return this.http.get(`${this.uri}/recordWei/${id}`);
   }
@@ -32,14 +42,20 @@ export class RecordWeiService {
     return this.http.get(`${this.uri}/myRecordsWei/${id}`);
   }
 
-  addRecordWei(idUser, idWei, name,record, state, date) {
+  getRecordWeiByUserWeiId(userId, weiId) {
+    return this.http.get(`${this.uri}/recordWei/weightlifting/${userId}/${weiId}`);
+  }
+
+  addRecordWei(idUser, idWei, name,record, state, date, sexe, nameUs) {
     const recordWei = {
       idUser: idUser,
       idWei: idWei,
       name: name,
       record: record,
       state: state,
-      date: date
+      date: date,
+      sexe: sexe,
+      nameUs: nameUs
     };
     return this.http.post(`${this.uri}/recordWei/add`, recordWei)
   }

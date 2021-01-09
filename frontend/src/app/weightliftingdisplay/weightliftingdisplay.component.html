@@ -1,9 +1,7 @@
 <div class="container">
-  <h1>{{weightlifting.name}}</h1>
+  <h1 *ngIf="this.weightlifting">{{weightlifting.name}}</h1>
   <h3>Description:</h3>
-  <p>{{weightlifting.desc}}</p>
-  <h3>Tips:</h3>
-  <p>{{weightlifting.tips}}</p>
+  <p *ngIf="this.weightlifting">{{weightlifting.desc}}</p>
   <div class="d-flex justify-content-center align-items-center">
     <button *ngIf="this.token" id="addRecord" class="btn btn-success" (click)="openDialog(this.id, this.weightlifting.name)">Add record </button>
   </div>
@@ -11,13 +9,55 @@
     <div class="col-md-6 no-gutters">
       <div class="leftside d-flex justify-content-center align-items-center">
             <h2>Men Records</h2>
-            <table></table>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col"> User</th>
+                  <th scope="col"> Date </th>
+                  <th scope="col"> Record </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let record of this.recordsWomen;">
+                  <td>
+                    <label> {{record.nameUs}}</label>
+                  </td>
+                  <td>
+                    <label> {{record.date}}</label>
+                  </td>
+                  <td>
+                    <label> {{record.record}}</label>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
       </div>
     </div>
     <div class="col-md-6 no-gutters">
       <div class="rightside d-flex justify-content-center align-items-center">
         <h2>Women Records</h2>
-        <table></table>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col"> User</th>
+              <th scope="col"> Date </th>
+              <th scope="col"> Record </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let record of this.recordsWomen;">
+              <td>
+                <label> {{record.nameUs}}</label>
+              </td>
+              <td>
+                <label> {{record.date}}</label>
+              </td>
+              <td>
+                <label> {{record.record}}</label>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       </div>
 </div>

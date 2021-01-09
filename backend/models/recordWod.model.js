@@ -18,6 +18,12 @@ let recordWodSchema = new mongoose.Schema({
      },
      date: {
         type: Date
+    },
+    sexe: {
+        type: String
+    },
+    nameUs: {
+        type: String
     }
  });
 

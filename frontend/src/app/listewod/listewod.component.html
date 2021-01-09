@@ -1,5 +1,5 @@
 <div class="container">
-  <button *ngIf="this.token && this.user.email=='admin@gmail.com'" class="btn btn-success" routerLink='/wods/add'>Add a Wod</button>
+  <button *ngIf="this.token && this.user && this.user.email=='admin@gmail.com'" class="btn btn-success" routerLink='/wods/add'>Add a Wod</button>
   <br><br>
   <br>
   <div class="content" role="main">
@@ -13,8 +13,8 @@
         <!-- results of ngFor is passed to appFilter with argument searchText -->
         <td class="list-group-item" *ngFor="let wod of wods">
           <button class="btn" [routerLink]="['/wods',wod._id]">{{wod.name}}</button>
-          <button *ngIf="this.token && this.user.email=='admin@gmail.com'" class="btn btn-warning" [routerLink]="['/wods/modify',wod._id]">Modify</button>
-          <button  *ngIf="this.token && this.user.email=='admin@gmail.com'" class="btn btn-danger" (click)="deleteWod(wod._id)">Delete</button>
+          <button *ngIf="this.token && this.user && this.user.email=='admin@gmail.com'" class="btn btn-warning" [routerLink]="['/wods/modify/',wod._id]">Modify</button>
+          <button  *ngIf="this.token && this.user && this.user.email=='admin@gmail.com'" class="btn btn-danger" (click)="deleteWod(wod._id)">Delete</button>
         </td>
       </ul>
     </div>

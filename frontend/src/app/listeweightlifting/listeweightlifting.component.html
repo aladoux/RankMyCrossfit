@@ -1,5 +1,5 @@
 <div class="container">
-  <button *ngIf="this.token && this.user.email=='admin@gmail.com'" class="btn btn-success" routerLink="/weightliftings/add">Add a Weightlifting movement</button>
+  <button *ngIf="this.token&& this.user && this.user.email=='admin@gmail.com'" class="btn btn-success" routerLink="/weightliftings/add">Add a Weightlifting movement</button>
   <br><br>
 
   <br>
@@ -14,8 +14,8 @@
         <!-- results of ngFor is passed to appFilter with argument searchText -->
         <td class="list-group-item" *ngFor="let weightlifting of weightliftings">
           <button class="btn" [routerLink]="['/weightliftings',weightlifting._id]">{{weightlifting.name}}</button>
-          <button *ngIf="this.token && this.user.email=='admin@gmail.com'" class="btn btn-warning" [routerLink]="['/weightliftings/modify',weightlifting._id]">Modify</button>
-          <button *ngIf="this.token && this.user.email=='admin@gmail.com'" class="btn btn-danger" (click)="deleteWeightlifting(weightlifting._id)" >Delete</button>
+          <button *ngIf="this.token&& this.user && this.user.email=='admin@gmail.com'" class="btn btn-warning" [routerLink]="['/weightliftings/modify',weightlifting._id]">Modify</button>
+          <button *ngIf="this.token&& this.user && this.user.email=='admin@gmail.com'" class="btn btn-danger" (click)="deleteWeightlifting(weightlifting._id)" >Delete</button>
         </td>
       </ul>
     </div>

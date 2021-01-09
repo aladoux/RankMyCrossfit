@@ -13,6 +13,17 @@ module.exports.display = (req,res) => {
     })
 }
 
+module.exports.displayByWodUserId = (req, res) => {
+    RecordWod.find({idUser: req.params.idUser, idWod: req.params.idWod}, (err, recordWod) => {
+       if(err){
+           console.log(err);
+       }
+       else{
+           res.json(recordWod);
+       }
+    }); 
+   }
+
 module.exports.displayUserId = (req,res) => {
     RecordWod.find({idUser: req.params.id}, (err, recordWod) => {
         if(err){
@@ -25,7 +36,7 @@ module.exports.displayUserId = (req,res) => {
 }
 
 module.exports.displayId = (req,res) => {
-    RecordWod.findById(req.params.id, (err, recordWod) => {
+    RecordWod.find({idWod: req.params.id}, (err, recordWod) => {
         if(err){
             console.log(err);
         }
@@ -35,6 +46,38 @@ module.exports.displayId = (req,res) => {
     });
 }
 
+module.exports.displayPublicWoman = (req,res) => {
+    RecordWod.find({idWod: req.params.id, state: "public", sexe:"woman"}, (err, recordWod) => {
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.json(recordWod);
+        }
+    }).sort({"record":1});
+}
+
+module.exports.displayPublicMan = (req,res) => {
+    RecordWod.find({idWod: req.params.id, state: "public", sexe:"man"}, (err, recordWod) => {
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.json(recordWod);
+        }
+    }).sort({"record":1});
+}
+
+module.exports.displayPublicByWodId = (req,res) => {
+    RecordWod.find({idWod: req.params.idWod, state: "public"}, (err, recordWod) => {
+        if(err){
+            console.log(err);
+        }
+        else{
+            res.json(recordWod);
+        }
+    });
+}
 
 module.exports.add = (req, res) => {
     let recordWod = new RecordWod(req.body);
@@ -73,3 +116,5 @@ module.exports.remove = (req, res) => {
         }
     })
 }
+
+

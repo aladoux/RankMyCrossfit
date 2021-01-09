@@ -5,6 +5,8 @@ import {WodService} from '../shared/wod.service';
 import {WeightliftingService} from '../shared/weightlifting.service';
 import {Weightlifting} from '../shared/weightlifting.model';
 import {HttpClient} from '@angular/common/http';
+import {Exercise} from '../shared/exercise.model';
+import {ExerciceApi} from '../shared/exerciceApi.model';
 
 
 @Component({
@@ -13,11 +15,13 @@ import {HttpClient} from '@angular/common/http';
   templateUrl: './addwodform.component.html'
 })
 export class AddWodFormComponent implements OnInit{
-  apiUrl = "https://wger.de/api/v2/exercice/ -H 'Authorization: Token 6559b40ffd902842b597819d2316a8cc4030eba6'";
-  weightliftings: Weightlifting[];
+  apiUrl = "https://wger.de/api/v2/exercise.json/";
+  weightliftings: Weightlifting[] = []; // tab des mouv weight
   unities = ["kilometers", "repetitions", "minutes", "seconds", "calories"];
-  exoApi;
+  exoApi; //json des mouv api
+  exoApiNames: String[14];
   productForm: FormGroup;
+  exercices : ExerciceApi[] = [];
 
   constructor(private _http: HttpClient,private fb:FormBuilder,private weightliftingService: WeightliftingService, private wodService: WodService, private router: Router) {
     this.productForm = this.fb.group({
@@ -25,6 +29,10 @@ export class AddWodFormComponent implements OnInit{
       exercises: this.fb.array([]) ,
 
     });
+  }
+
+  exercises() : FormArray {
+    return this.productForm.get("exercises") as FormArray
   }
 
   onBack(){
@@ -43,34 +51,37 @@ export class AddWodFormComponent implements OnInit{
       .getWeightliftings()
       .subscribe((data: Weightlifting[]) => {
         this.weightliftings = data;
-        console.log('Data requested ...');
         console.log(this.weightliftings);
+        for(let i=0;i<this.weightliftings.length;i++){
+          const exercice : ExerciceApi = {name: this.weightliftings[i].name, desc: this.weightliftings[i].desc};
+          this.exercices.push(exercice);
+        }
+        console.log(this.exercices);
       });
   }
 
   fetchExoApi(){
-    this.exoApi = this._http.get(this.apiUrl);
-    console.log(this.exoApi);
-    //curl -X GET https://wger.de/api/v2/workout/ \-H 'Authorization: Token 6559b40ffd902842b597819d2316a8cc4030eba6';
+    this._http.get(this.apiUrl).subscribe(res => {
+      this.exoApi = JSON.stringify(res);
+      const exoApiParse = JSON.parse(this.exoApi);
+      const exoApiResults = exoApiParse.results;
+      console.log(exoApiResults);
+      for(let i=0;i<exoApiResults.length;i++){
+        const exercice : ExerciceApi = {name: exoApiResults[i].name, desc: exoApiResults[i].description};
+        this.exercices.push(exercice);
+      }
+      console.log(this.exercices);
+    });
+
   }
 
-
-
-  exercises() : FormArray {
-    return this.productForm.get("exercises") as FormArray
-  }
 
   newExercise(): FormGroup {
     return this.fb.group({
-      exoId: ['', Validators.required],
-      type: 's',
-      list:[''],
+      objectExo: ['', Validators.required],
+      quantity: '',
+      listeUnit: '',
       weight: '',
-      nbOfRep: '',
-      time: '',
-      kcal: '',
-      distance: '',
-
     })
   }
 
@@ -84,9 +95,12 @@ export class AddWodFormComponent implements OnInit{
   }
 
   onAddWod() {
+    for(let exo of (this.productForm.value.exercises)){
+      exo.objectExo = JSON.parse(exo.objectExo);
+    }
+    //this.productForm.value.exercises[0].objectExo = JSON.parse((this.productForm.value.exercises[0].objectExo).objectExo);
     this.wodService.addWod(this.productForm.value.name, this.productForm.value.exercises).subscribe(() => {
       this.router.navigate(['/wods']);
     });
-    console.log(this.productForm.value);
   }
 }

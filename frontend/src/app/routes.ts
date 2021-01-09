@@ -13,6 +13,9 @@ import { ModifyWodFormComponent } from './modifywod/modifywodform.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ListRecordWeiComponent } from './list-record-wei/list-record-wei.component';
 import { ListRecordWodComponent } from './list-record-wod/list-record-wod.component';
+import {UserRecordsGraphComponent} from './user-records-graph/user-records-graph.component';
+import {UserRecordsGraphWodComponent} from './user-records-graph-wod/user-records-graph-wod.component';
+
 
 import {AuthGuard} from './auth/auth.guard';
 
@@ -42,7 +45,13 @@ export const appRoutes: Routes = [
     path: 'weightliftings/:id' , component: WeightliftingDisplayComponent, pathMatch: 'full'
   },
   {
+    path: 'weightliftings/:idUser/:idWei' , component: UserRecordsGraphComponent
+  },
+  {
     path: 'wods/modify/:id' , component: ModifyWodFormComponent
+  },
+  {
+    path: 'wods/:idUser/:idWod' , component: UserRecordsGraphWodComponent
   },
   {
     path: 'accueil' , component: PrincipalViewComponent

@@ -34,7 +34,7 @@ export class DialogRecordWeiComponent implements OnInit {
 
   onSubmit(form: NgForm){
     console.log(form.value);
-    this.recordWeiService.addRecordWei(this.userDetails._id,this.idWei,this.name,form.value.record,form.value.state,form.value.date).subscribe(
+    this.recordWeiService.addRecordWei(this.userDetails._id,this.idWei,this.name,form.value.record,form.value.state,form.value.date, this.userDetails.sexe, this.userDetails.username).subscribe(
       res => {
         this.formisvalid = true;
       },
@@ -55,7 +55,9 @@ export class DialogRecordWeiComponent implements OnInit {
       name: '',
       record: 0,
       state: '',
-      date: new Date()
+      date: new Date(),
+      sexe: '',
+      nameUs: '',
     };
     form.resetForm();
     this.serverErrorMessages = '';

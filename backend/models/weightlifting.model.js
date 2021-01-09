@@ -8,9 +8,6 @@ let weightliftingSchema = new mongoose.Schema({
     },
     desc: {
         type: String
-    },
-    tips: {
-        type: String
     }
 });
 
