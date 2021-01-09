@@ -45,7 +45,7 @@ import { DialogModifyRecordWeiComponent } from './dialog-modify-record-wei/dialo
 import { DialogDisplayExerciseComponent } from './dialog-display-exercise/dialog-display-exercise.component';
 import { UserRecordsGraphComponent } from './user-records-graph/user-records-graph.component';
 import { UserRecordsGraphWodComponent } from './user-records-graph-wod/user-records-graph-wod.component';
-
+import {ChartsModule} from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -91,6 +91,7 @@ import { UserRecordsGraphWodComponent } from './user-records-graph-wod/user-reco
     MatTableModule,
     MatDividerModule,
     BrowserAnimationsModule,
+    ChartsModule,
   ],
   providers: [WodService, WeightliftingService, UserService, AuthGuard, {
     provide:HTTP_INTERCEPTORS,

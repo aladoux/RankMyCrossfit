@@ -56,13 +56,13 @@
   <h2 *ngIf="this.recordWod"> My performance graph</h2>
   <div>
     <div style="display: block;">
-      <!--<canvas chart
+      <canvas *ngIf="this.recordLegend" baseChart
         [datasets]="recordData"
         [labels]="recordLabels"
-        [options]="recordOption"
+        [options]="recordOptions"
         [legend]="recordLegend"
         [chartType]="barChartType">
-      </canvas>-->
+      </canvas>
     </div>
   </div>
 
