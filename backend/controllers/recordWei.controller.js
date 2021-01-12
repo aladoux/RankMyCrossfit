@@ -65,7 +65,7 @@ module.exports.displayByWeiUserId = (req, res) => {
     else{
         res.json(recordWei);
     }
- }); 
+ }).sort({"date":1}); 
 }
 
 

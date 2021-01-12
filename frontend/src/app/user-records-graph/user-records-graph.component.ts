@@ -1,4 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
+import {WeightliftingService} from '../shared/weightlifting.service'
+import {Router} from '@angular/router'
+import {ActivatedRoute} from '@angular/router';
+import {Weightlifting} from '../shared/weightlifting.model';
+import {DialogRecordWeiComponent} from '../dialog-record-wei/dialog-record-wei.component';
+import {UserService} from '../shared/user.service';
+import {RecordWei} from '../shared/recordWei.model';
+import {RecordWeiService} from '../shared/recordWei.service';
+import {DialogModifyRecordWeiComponent} from '../dialog-modify-record-wei/dialog-modify-record-wei.component'
 
 @Component({
   selector: 'app-user-records-graph',
@@ -7,9 +17,90 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserRecordsGraphComponent implements OnInit {
 
-  constructor() { }
+
+  public recordOptions = {
+    scaleShowVerticalLines: false,
+    responsive: true
+  };
+
+  public recordLabels = ['2006','2007','2008','2009','2010'];
+  public barChartType = 'line';
+  public recordLegend = true;
+  public recordData = [
+    {data: [], label:'Your performance'},
+    //{data: [56,67,78,89,45,34], label:'Series B'}
+  ];
+
+  weightlifting: Weightlifting;
+  idWei: String;
+  idUser: String;
+  record: Number;
+  token = "";
+  recordWei: RecordWei[] = [];
+  data: Number[] = [];
+  label: string[] = [];
+
+  constructor(private dialog: MatDialog,private recordWeiService: RecordWeiService,private weightliftingService: WeightliftingService, private router: ActivatedRoute,private userService: UserService) { }
 
   ngOnInit(): void {
+    this.router.params.subscribe(params => {
+      this.idWei = params['idWei'];
+      this.idUser = params['idUser'];
+      });
+     this.fetchWeightlifting();
+     this.fetchRecords();
+     this.token = this.userService.getToken();
+     this.getData();
+  }
+
+  fetchWeightlifting(){
+    this.weightliftingService
+      .getWeightliftingById(this.idWei)
+      .subscribe((data: Weightlifting) => {
+        this.weightlifting = data;
+        console.log('Data requested ...');
+        console.log(this.weightlifting);
+      });
+  }
+
+  fetchRecords(){
+    this.recordWeiService
+      .getRecordWeiByUserWeiId(this.idUser, this.idWei)
+      .subscribe((data: RecordWei[]) => {
+        this.recordWei = data;
+        console.log('Data requested ...');
+        console.log("dede",this.recordWei);
+        this.getData();
+      });
+  }
+
+  getData(){
+    let i =0;
+    for(let rec of this.recordWei){
+      this.data[i] = rec.record;
+      this.label[i] = rec.date.toString();
+      i++;
+    }
+    this.recordData[0].data = this.data;
+    this.recordLabels = this.label;
+  }
+
+  openDialog(id, name): void {
+    let dialo = this.dialog.open(DialogRecordWeiComponent);
+    dialo.componentInstance.idWei = id;
+    dialo.componentInstance.name = name;
+  }
+
+  openDialogMod(record): void {
+    let dialo = this.dialog.open(DialogModifyRecordWeiComponent);
+    dialo.componentInstance.recordWei = record;
+    this.getData();
+  }
+
+  deleteRecordWei(id){
+    this.recordWeiService.deleteRecordWei(id).subscribe(() => {
+      this.fetchRecords();
+    });
   }
 
 }

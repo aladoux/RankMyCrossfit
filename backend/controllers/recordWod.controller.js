@@ -10,7 +10,7 @@ module.exports.display = (req,res) => {
         else{
             res.json(recordWod);
         }
-    })
+    });
 }
 
 module.exports.displayByWodUserId = (req, res) => {
@@ -21,7 +21,7 @@ module.exports.displayByWodUserId = (req, res) => {
        else{
            res.json(recordWod);
        }
-    }); 
+    }).sort({"date":1}); 
    }
 
 module.exports.displayUserId = (req,res) => {

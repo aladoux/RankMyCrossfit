@@ -42,7 +42,6 @@ router.post('/recordWei/update/:id', ctrlRecordWei.update);
 
 /**ROUTES RECORDWOD */
 router.get('/recordWod/wod/:idUser/:idWod', ctrlRecordWod.displayByWodUserId);
-
 router.get('/myRecordsWod/:id', ctrlRecordWod.displayUserId); //get all wod records
 router.get('/recordWod/:id', ctrlRecordWod.displayId); //get a wod record with his id
 router.get('/recordWod/publicman/:id', ctrlRecordWod.displayPublicMan);
@@ -51,6 +50,6 @@ router.get('/recordWod/wod/:id', ctrlRecordWod.displayPublicByWodId); //get publ
 //router.get('/recordWod/user/:id', ctrlRecordWod.displayByUserId); //get records of an user is passed in parameter
 router.post('/recordWod/add', ctrlRecordWod.add);
 router.get('/recordWod/remove/:id', ctrlRecordWod.remove);
-//router.post('/recordWod/update/:id', ctrlRecordWod.update);
+router.post('/recordWod/update/:id', ctrlRecordWod.update);
 
 module.exports = router;

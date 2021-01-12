@@ -1,1 +1,42 @@
-<p>user-records-graph works!</p>
+<div class="container">
+  <h1 *ngIf="this.weightlifting">{{weightlifting.name}}</h1>
+  <h3>Description:</h3>
+  <p *ngIf="this.weightlifting">{{weightlifting.desc}}</p>
+  <div class="d-flex justify-content-center align-items-center">
+    <button *ngIf="this.token" id="addRecord" class="btn btn-success" (click)="openDialog(this.idWei, this.weightlifting.name)">Add record </button>
+  </div>
+
+
+<br>
+  <h2 *ngIf="this.weightlifting">My records for {{weightlifting.name}}</h2>
+  <div class="content" role="main">
+    <div class="card">
+      <ul class="list-group list-group-flush">
+        <!-- results of ngFor is passed to appFilter with argument searchText -->
+        <td class="list-group-item" *ngFor="let record of recordWei">
+          <label> {{record.name}} </label>
+          <label> {{record.record}} min </label>
+          <label> {{record.date}} </label>
+          <label>{{record.state}}</label>
+          <button class="btn btn-warning" (click)="openDialogMod(record)">Modify</button>
+          <button class="btn btn-danger" (click)="deleteRecordWei(record._id)" >Delete</button>
+        </td>
+      </ul>
+    </div>
+  </div>
+
+  <br>
+  <h2 *ngIf="this.recordWei"> My performance graph</h2>
+  <div>
+    <div style="display: block;">
+      <canvas *ngIf="this.recordLegend" baseChart
+        [datasets]="recordData"
+        [labels]="recordLabels"
+        [options]="recordOptions"
+        [legend]="recordLegend"
+        [chartType]="barChartType">
+      </canvas>
+    </div>
+  </div>
+
+</div>

@@ -24,12 +24,12 @@ export class UserRecordsGraphWodComponent implements OnInit {
     responsive: true
   };
 
-  public recordLabels = ['2006','2007','2008','2009','2010'];
+  public recordLabels = [];
   public barChartType = 'line';
   public recordLegend = true;
   public recordData = [
-    {data: [65,29,67,89,9,67], label:'Your performance'},
-    {data: [56,67,78,89,45,34], label:'Series B'}
+    {data: [], label:'Your performance'},
+    //{data: [56,67,78,89,45,34], label:'Series B'}
   ];
 
   constructor(private dialog: MatDialog,private recordWodService: RecordWodService,private wodService: WodService, private router: ActivatedRoute,private userService: UserService) { }
@@ -40,7 +40,8 @@ export class UserRecordsGraphWodComponent implements OnInit {
   exercises: Exercise[];
   token = "";
   recordWod: RecordWod[];
-
+  data: Number[] = [];
+  label: string[] = [];
 
   ngOnInit(): void {
     this.router.params.subscribe(params => {
@@ -50,8 +51,19 @@ export class UserRecordsGraphWodComponent implements OnInit {
     this.fetchWod();
     this.fetchRecords();
     this.token = this.userService.getToken();
+    this.getData();
   }
 
+  getData(){
+    let i =0;
+    for(let rec of this.recordWod){
+      this.data[i] = rec.record;
+      this.label[i] = rec.date.toString();
+      i++;
+    }
+    this.recordData[0].data = this.data;
+    this.recordLabels = this.label;
+  }
 
   fetchWod(){
     this.wodService
@@ -70,6 +82,7 @@ export class UserRecordsGraphWodComponent implements OnInit {
         this.recordWod = data;
         console.log('Data requested ...');
         console.log("dede",this.recordWod);
+        this.getData();
       });
   }
 
