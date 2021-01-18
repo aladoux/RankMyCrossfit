@@ -5,10 +5,10 @@
       <ul class="list-group list-group-flush">
         <!-- results of ngFor is passed to appFilter with argument searchText -->
         <td class="list-group-item" *ngFor="let record of recordWei">
-          <label> {{record.name}} </label>
-          <label> {{record.record}} kg </label>
-          <label> {{record.date}} </label>
-          <label>{{record.state}}</label>
+          <label style="margin-right:10px"> {{record.name}} </label>
+          <label style="margin-right:10px"> {{record.record}} kg </label>
+          <label style="margin-right:10px"> {{record.date}} </label>
+          <label style="margin-right:10px">{{record.state}}</label>
           <button class="btn btn-warning" (click)="openDialog(record)">Modify</button>
           <button class="btn btn-danger" (click)="deleteRecordWei(record._id)" >Delete</button>
         </td>

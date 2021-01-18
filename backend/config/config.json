@@ -3,6 +3,6 @@
         "PORT": 4000,
         "MONGODB_URI": "mongodb+srv://admin:projetWeb@wods.qqmxg.mongodb.net/RankMyCrossfit?retryWrites=true&w=majority",
         "JWT_SECRET": "SECRET#123",
-        "JWT_EXP": "10m"
+        "JWT_EXP": "15m"
     }
 }

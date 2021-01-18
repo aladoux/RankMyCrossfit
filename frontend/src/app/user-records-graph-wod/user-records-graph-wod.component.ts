@@ -24,13 +24,7 @@ export class UserRecordsGraphWodComponent implements OnInit {
     responsive: true
   };
 
-  public recordLabels = [];
-  public barChartType = 'line';
-  public recordLegend = true;
-  public recordData = [
-    {data: [], label:'Your performance'},
-    //{data: [56,67,78,89,45,34], label:'Series B'}
-  ];
+
 
   constructor(private dialog: MatDialog,private recordWodService: RecordWodService,private wodService: WodService, private router: ActivatedRoute,private userService: UserService) { }
 
@@ -42,6 +36,14 @@ export class UserRecordsGraphWodComponent implements OnInit {
   recordWod: RecordWod[];
   data: Number[] = [];
   label: string[] = [];
+
+  public recordLabels = [];
+  public barChartType = 'line';
+  public recordLegend = true;
+  public recordData = [
+    {data: this.data, label:'Your performance'},
+    //{data: [56,67,78,89,45,34], label:'Series B'}
+  ];
 
   ngOnInit(): void {
     this.router.params.subscribe(params => {
@@ -72,6 +74,7 @@ export class UserRecordsGraphWodComponent implements OnInit {
         this.wod = data;
         this.exercises = data.exercises;
         console.log('Data requested ...');
+        this.getData();
       });
   }
 
@@ -90,6 +93,9 @@ export class UserRecordsGraphWodComponent implements OnInit {
     let dialo = this.dialog.open(DialogRecordWodComponent);
     dialo.componentInstance.idWod = id;
     dialo.componentInstance.name = name;
+    dialo.afterClosed().subscribe(() => {
+      this.fetchRecords();
+    })
   }
 
   openDialogExo(exo): void {
@@ -100,11 +106,15 @@ export class UserRecordsGraphWodComponent implements OnInit {
   openDialogMod(record): void {
     let dialo = this.dialog.open(DialogModifyRecordWodComponent);
     dialo.componentInstance.recordWod = record;
+    dialo.afterClosed().subscribe(() => {
+      this.fetchRecords();
+    })
   }
 
   deleteRecordWod(id){
     this.recordWodService.deleteRecordWod(id).subscribe(() => {
       this.fetchRecords();
     });
+    this.fetchRecords();
   }
 }
