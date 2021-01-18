@@ -4,14 +4,7 @@
 
 - **Documentation**
 
-  - [READ-front.md](https://github.com/aladoux/RankMyCrossfit/blob/master/frontend/README.md) : Commandes et Informations relatives à l'exécution du frontend.
-  - [READ-back.md](https://github.com/aladoux/RankMyCrossfit/blob/master/frontend/README.md) : Commandes et Informations relatives à l'exécution du backend.
-
-## Lancement rapide
-
-Front-end : Run `cd frontend && ng serve`
-Back-end : Run `cd backend && npm start`
-Dev Server : Go to `http://localhost:4200/`
+  - [Administrateur.md](https://github.com/aladoux/RankMyCrossfit/blob/master/docs/administrateur.md) : Commandes et Informations relatives à l'exécution du serveur Web. (Back & Front).
 
 # User Stories
 
