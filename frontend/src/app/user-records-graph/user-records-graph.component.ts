@@ -89,17 +89,26 @@ export class UserRecordsGraphComponent implements OnInit {
     let dialo = this.dialog.open(DialogRecordWeiComponent);
     dialo.componentInstance.idWei = id;
     dialo.componentInstance.name = name;
+    dialo.afterClosed().subscribe(() => {
+      this.fetchRecords();
+      window.location.reload();
+    })
   }
 
   openDialogMod(record): void {
     let dialo = this.dialog.open(DialogModifyRecordWeiComponent);
     dialo.componentInstance.recordWei = record;
     this.getData();
+    dialo.afterClosed().subscribe(() => {
+      this.fetchRecords();
+      window.location.reload();
+    })
   }
 
   deleteRecordWei(id){
     this.recordWeiService.deleteRecordWei(id).subscribe(() => {
       this.fetchRecords();
+      window.location.reload();
     });
   }
 

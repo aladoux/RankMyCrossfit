@@ -95,6 +95,7 @@ export class UserRecordsGraphWodComponent implements OnInit {
     dialo.componentInstance.name = name;
     dialo.afterClosed().subscribe(() => {
       this.fetchRecords();
+      window.location.reload();
     })
   }
 
@@ -108,13 +109,14 @@ export class UserRecordsGraphWodComponent implements OnInit {
     dialo.componentInstance.recordWod = record;
     dialo.afterClosed().subscribe(() => {
       this.fetchRecords();
+      window.location.reload();
     })
   }
 
   deleteRecordWod(id){
     this.recordWodService.deleteRecordWod(id).subscribe(() => {
       this.fetchRecords();
+      window.location.reload();
     });
-    this.fetchRecords();
   }
 }
