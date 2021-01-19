@@ -51,12 +51,12 @@ export class AddWodFormComponent implements OnInit{
       .getWeightliftings()
       .subscribe((data: Weightlifting[]) => {
         this.weightliftings = data;
-        console.log(this.weightliftings);
+        //console.log(this.weightliftings);
         for(let i=0;i<this.weightliftings.length;i++){
           const exercice : ExerciceApi = {name: this.weightliftings[i].name, desc: this.weightliftings[i].desc};
           this.exercices.push(exercice);
         }
-        console.log(this.exercices);
+        //console.log(this.exercices);
       });
   }
 
@@ -65,12 +65,12 @@ export class AddWodFormComponent implements OnInit{
       this.exoApi = JSON.stringify(res);
       const exoApiParse = JSON.parse(this.exoApi);
       const exoApiResults = exoApiParse.results;
-      console.log(exoApiResults);
+      //console.log(exoApiResults);
       for(let i=0;i<exoApiResults.length;i++){
         const exercice : ExerciceApi = {name: exoApiResults[i].name, desc: exoApiResults[i].description};
         this.exercices.push(exercice);
       }
-      console.log(this.exercices);
+      //console.log(this.exercices);
     });
 
   }

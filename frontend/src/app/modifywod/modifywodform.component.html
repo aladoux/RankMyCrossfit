@@ -7,7 +7,7 @@
 
     <p>
       <label for="name">Wod Name:</label>
-      <input *ngIf="this.wod" [(ngModel)]="this.wod.name" type="text" id="name" name="name" formControlName="name" class="form-control">
+      <input *ngIf="this.wod && this.exoApi" [(ngModel)]="this.wod.name" type="text" id="name" name="name" formControlName="name" class="form-control">
     </p>
 
     <table *ngIf="this.wod" class="table" formArrayName="exercises">

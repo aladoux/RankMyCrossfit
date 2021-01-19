@@ -36,6 +36,20 @@ constructor(private _http: HttpClient,private fb:FormBuilder,private weightlifti
     });
   }
 
+ngOnInit(): void {
+  this.router.params.subscribe(params => {
+    this.id = params['id'];
+    });
+    this.fetchWeightliftings();
+    this.fetchExoApi();
+    console.log(this.wod);
+
+}
+
+ngAfterViewInit(){
+  this.fetchWod();
+}
+
 exercises() : FormArray {
     return this.productForm.get("exercises") as FormArray
   }
@@ -45,15 +59,7 @@ onBack(){
 }
 
 
-ngOnInit(): void {
-  this.router.params.subscribe(params => {
-    this.id = params['id'];
-    });
-    //this.fetchWod();
-    this.fetchWeightliftings();
-    this.fetchExoApi();
-    this.fetchWod();
-}
+
 
 fetchWeightliftings(){
   this.weightliftingService
@@ -92,9 +98,11 @@ fetchWod(){
         this.exos = data.exercises;
         //console.log("dede",this.exos);
         for(let ex of this.exos){
-          //const exo : ExerciceApi = {name: ex.objectExo.name, desc: ex.objectExo.desc};
-          this.exercises().push(this.existExercise(ex.objectExo, ex.quantity,ex.listeUnit,ex.weight));
+          const exo : ExerciceApi = {name: ex.objectExo.name, desc: ex.objectExo.desc};
+          //this.productForm.value.exercises.objectExo.setValue();
+          this.exercises().push(this.existExercise(exo, ex.quantity,ex.listeUnit,ex.weight));
         }
+        //console.log("coucou",this.exercices);
       });
 
   }
