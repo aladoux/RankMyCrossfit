@@ -1,7 +1,6 @@
 #logo {
   width: 8%;
   overflow: hidden;
-
   vertical-align: middle;
 }
 .d-block {
@@ -53,10 +52,6 @@ div {
   align-items: center;
 }
 
-#acc {
-  color: white;
-}
-
 .btn {
   display: inline-block;
   font-weight: 400;
@@ -77,10 +72,6 @@ div {
 }
 
 @media (min-width: 768px) {
-  .bd-navbar {
-    position: sticky;
-    top: 0;
-  }
   .flex-md-row {
     flex-direction: row !important;
   }
@@ -93,6 +84,6 @@ div {
   .navbar {
     display: flex;
     align-items: center;
-    padding: 0.5rem 1rem;
+    margin-bottom: 0;
   }
 }
