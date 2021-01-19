@@ -7,15 +7,15 @@
     <div class="card">
       <div class="form-group">
         <label for="search-text">Search Text</label>
-        <input type="text" class="form-control" id="search-text" aria-describedby="search-text"
+        <input type="search" class="form-control" id="search-text"
           [(ngModel)]="weightliftingname" placeholder="Enter a weightlifting movement's name" (input)="Search()" autofocus/>
       </div>
       <ul class="list-group list-group-flush">
         <!-- results of ngFor is passed to appFilter with argument searchText -->
         <td class="list-group-item" *ngFor="let weightlifting of weightliftings">
           <button class="btn" [routerLink]="['/weightliftings',weightlifting._id]">{{weightlifting.name}}</button>
-          <button *ngIf="this.token&& this.user && this.user.email=='admin@gmail.com'" class="btn btn-warning" [routerLink]="['/weightliftings/modify',weightlifting._id]">Modify</button>
-          <button *ngIf="this.token&& this.user && this.user.email=='admin@gmail.com'" class="btn btn-danger" (click)="deleteWeightlifting(weightlifting._id)" >Delete</button>
+          <button *ngIf="this.token && this.user && this.user.email=='admin@gmail.com'" class="btn btn-warning" [routerLink]="['/weightliftings/modify',weightlifting._id]">Modify</button>
+          <button *ngIf="this.token && this.user && this.user.email=='admin@gmail.com'" class="btn btn-danger" (click)="deleteWeightlifting(weightlifting._id)" >Delete</button>
         </td>
       </ul>
     </div>
