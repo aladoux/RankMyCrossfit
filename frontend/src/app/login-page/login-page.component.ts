@@ -26,6 +26,7 @@ export class LoginPageComponent implements OnInit {
       res => {
         this.userService.setToken(res['token']);
         this.router.navigateByUrl('/userprofile');
+        window.location.reload();
       },
       err => {
         this.serverErrorMessages = err.error.message;

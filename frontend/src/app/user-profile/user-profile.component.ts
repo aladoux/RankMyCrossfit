@@ -56,6 +56,7 @@ export class UserProfileComponent implements OnInit {
   onLogout(){
     this.userService.deleteToken();
     this.router.navigate(['/login']);
+    window.location.reload();
   }
 
   SearchWod(){
