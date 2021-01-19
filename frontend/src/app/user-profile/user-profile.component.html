@@ -47,9 +47,9 @@
           <div class="container">
             <div class="content" role="main">
               <div class="card">
-                <div class="form-group">
+                <div class="form-group" >
                   <label for="search-text">Search Text</label>
-                  <input type="text" class="form-control" id="search-text" aria-describedby="search-text"
+                  <input type="search" class="form-control" id="search-text"
                     [(ngModel)]="wodname" placeholder="Enter a wod's name" (input)="SearchWod()" autofocus/>
                 </div>
                 <ul class="list-group list-group-flush">
@@ -75,7 +75,7 @@
           <div class="card">
             <div class="form-group">
               <label for="search-text">Search Text</label>
-              <input type="text" class="form-control" id="search-text" aria-describedby="search-text"
+              <input type="search" class="form-control" id="search-text" aria-describedby="search-text"
                 [(ngModel)]="weightliftingname" placeholder="Enter a weightlifting movement's name" (input)="SearchWei()" autofocus/>
             </div>
             <ul class="list-group list-group-flush">

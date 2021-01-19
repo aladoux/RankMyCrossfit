@@ -17,6 +17,9 @@ export class SignUpComponent implements OnInit {
   constructor(public userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
+    if(this.userService.isLoggedIn()){
+      this.router.navigateByUrl('/userprofile');
+    }
   }
 
   onSubmit(form: NgForm) {
