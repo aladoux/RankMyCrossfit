@@ -9,6 +9,13 @@
 
 Ces dépendances doivent être présentes pour la bonne exécution du projet.
 
+## Compte administrateur
+
+Afin de pouvoir modifier, ajouter et supprimer des wods et des mouvements d'haltérophilie, veuillez vous connecter avec ce compte:
+
+mail: admin@gmail.com
+mdp: adminadmin
+
 ## Processus d'Installation
 
 Afin de procéder à l'installation de notre projet, voici la procédure à effectuer:
