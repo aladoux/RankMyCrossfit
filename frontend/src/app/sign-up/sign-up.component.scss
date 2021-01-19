@@ -1,114 +1,113 @@
-#manLabel{
-  color: white;
-}
-
-#womanLabel{
-  color: white;
-}
-
-.validation-message{
-  color:rgb(175, 32, 32)
-}
-
-.alert{
-  color:rgb(175, 32, 32)
-}
-
 /* Made with love by Mutiullah Samim*/
 
-@import url('https://fonts.googleapis.com/css?family=Numans');
+@import url("https://fonts.googleapis.com/css?family=Numans");
 
-html,body{
-background-image: url('https://cdn.hipwallpaper.com/i/32/68/tBp3T5.jpg');
-background-size: cover;
-background-repeat: no-repeat;
-height: 100%;
-font-family: 'Numans', sans-serif;
-}
-
-.container{
-height: 100%;
-align-content: center;
-}
-
-.card{
-height: 390px;
-margin-top: auto;
-margin-bottom: auto;
-width: 400px;
-background-color: rgba(0,0,0,0.5) !important;
-}
-
-.card-body{
-  width: 550px;
+html,
+body {
+  background-image: url("https://cdn.hipwallpaper.com/i/32/68/tBp3T5.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
   height: 100%;
+  font-family: "Numans", sans-serif;
 }
 
-.card-footer{
-  height: 100px;
+.container {
+  height: 100%;
+  align-content: center;
 }
 
-.social_icon span{
-font-size: 60px;
-margin-left: 10px;
-color: #FFC312;
+.col-centered {
+  margin: 0 auto;
+  float: none;
 }
 
-.social_icon span:hover{
-color: white;
-cursor: pointer;
+.card {
+  height: 500px;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 400px;
+  background-color: rgba(0, 0, 0, 0.637) !important;
 }
 
-.card-header h3{
-color: white;
+.card-header {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.social_icon span {
+  font-size: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #ffc312;
 }
 
-.social_icon{
-position: absolute;
-right: 20px;
-top: -45px;
+.social_icon span:hover {
+  color: white;
+  cursor: pointer;
 }
 
-.input-group-prepend span{
-width: 50px;
-background-color: #FFC312;
-color: black;
-border:0 !important;
+.card-header h3 {
+  color: white;
 }
 
-input:focus{
-outline: 0 0 0 0  !important;
-box-shadow: 0 0 0 0 !important;
-
+.social_icon {
+  position: absolute;
+  right: 20px;
+  top: -45px;
 }
 
-.remember{
-color: white;
+.form-control {
+  font-size: 13px;
+}
+.input-group {
+  text-align: center;
 }
 
-.remember input
-{
-width: 20px;
-height: 20px;
-margin-left: 15px;
-margin-right: 5px;
+.input-group-prepend span {
+  width: 40px;
+  background-color: #ffc312;
+  color: black;
+  border: 0 !important;
 }
 
-.login_btn{
-color: black;
-background-color: #FFC312;
-width: 100px;
+input:focus {
+  outline: 0 0 0 0 !important;
+  box-shadow: 0 0 0 0 !important;
 }
 
-.login_btn:hover{
-color: black;
-background-color: white;
+.remember {
+  color: white;
 }
 
-.links{
-color: white;
+.remember input {
+  width: 20px;
+  height: 20px;
+  margin-left: 15px;
+  margin-right: 5px;
 }
 
-.links a{
-margin-left: 4px;
+.login_btn {
+  color: black;
+  background-color: #ffc312;
+  width: 100px;
+  font-size: 1.5em;
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.login_btn:hover {
+  color: black;
+  background-color: white;
+}
+
+.links {
+  color: white;
+}
+
+.links a {
+  margin-left: 4px;
+}
+
+.validation-message,
+.alert {
+  color: red;
 }

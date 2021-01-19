@@ -19,8 +19,8 @@
 </head>
 <body>
 <div class="container">
-	<div class="d-flex justify-content-center h-100">
-		<div class="card">
+	<div class="d-flex justify-content-center h-100 align-items-center">
+		<div class="card text-center">
 			<div class="card-header">
 				<h3>Login</h3>
 			</div>
@@ -28,7 +28,7 @@
 				<form #logInForm="ngForm" (ngSubmit)="logInForm.valid && onSubmit(logInForm)">
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-envelope"></i></span>
+							<span class="input-group-text justify-content-center"><i class="fas fa-envelope"></i></span>
 						</div>
 						<input type="text" class="form-control" name="email" #email="ngModel" [(ngModel)]="model.email" placeholder="email" [pattern]="emailRegex" required [ngClass]="{'invalid-textbox': logInForm.submitted && !email.valid}">
             <div *ngIf="logInForm.submitted && email.errors?.pattern">
@@ -37,7 +37,7 @@
 					</div>
 					<div class="input-group form-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-key"></i></span>
+							<span class="input-group-text justify-content-center"><i class="fas fa-key"></i></span>
 						</div>
             <input type="password" name="password" class="form-control" placeholder="password" #password="ngModel" [(ngModel)]="model.password" required minlength="6" [ngClass]="{'invalid-textbox':logInForm.submitted && !password.valid}">
             <div *ngIf="logInForm.submitted && password.errors?.minlength">
@@ -45,7 +45,7 @@
             </div>
 					</div>
 					<div class="form-group">
-						<input type="submit" value="Login" class="btn float-right login_btn">
+						<input type="submit" value="Login" class="btn btn-light login_btn">
 					</div>
         </form>
         <div class="alert" *ngIf="serverErrorMessages">
@@ -53,7 +53,7 @@
         </div>
 			</div>
 			<div class="card-footer">
-				<div class="d-flex justify-content-center links">
+				<div class="d-flex justify-content-center links align-items-center" style="font-size: 12px;">
 					Don't have an account?<a class="nav-link" routerLink="/signup">Sign Up</a>
 				</div>
 			</div>
