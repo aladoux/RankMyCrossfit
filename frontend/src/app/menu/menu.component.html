@@ -1,26 +1,24 @@
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="./menu.component.scss">
 
-<nav id="menuPrincipal" class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="collapse navbar-collapse w-100">
-    <a id="acc" class="nav-link nav-item" routerLink="accueil">
-      <img id="logo" src="./assets/images/logo/Image2.png">
-      Rank my CrossFit
-    </a>
-    <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link nav-item" routerLink="accueil" title="Accueil">Accueil</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="wods" title="Wods" >Wods</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="weightliftings" title="Weightlifting">Weightlifting</a>
-        </li>
-        <li class="nav-item" id="compteBouton" >
-         <a class="nav-link" routerLink="login" title="Log in" >Login</a>
-				</li>
+<nav id="menuPrincipal" class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar bg-dark">
+  <a class="navbar-brand mr-0 mr-md-2" href="/" aria-label="RankMyCrossfit">
+      <img class="d-block" id="logo" src="./assets/images/logo/Image2.png">
+      <h2>RankMyCrossfit</h2>
+  </a>
 
-      </ul>
-  </div>
+  <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex py-4">
+    <li class="nav-item">
+      <a class="nav-link nav-item" routerLink="accueil" title="Accueil2"><h2>Accueil</h2></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="wods" title="Wods" ><h2>Wods</h2></a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="weightliftings" title="Weightlifting"><h2>Weightlifting</h2></a>
+    </li>
+  </ul>
+  <a *ngIf="token == ''" class="btn btn-light d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" id="compteBouton" routerLink="login" title="Log in">Se connecter</a>
+  <a *ngIf="token == ''" class="btn btn-light d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" id="signupButton" routerLink="/signup" title="Sign up">S'inscrire</a>
+  <a *ngIf="token != ''" class="btn btn-light d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" id="compteBouton" routerLink="login" title="Log in">Se déconnecter</a>
 </nav>
