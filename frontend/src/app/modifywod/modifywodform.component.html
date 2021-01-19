@@ -10,7 +10,7 @@
       <input *ngIf="this.wod" [(ngModel)]="this.wod.name" type="text" id="name" name="name" formControlName="name" class="form-control">
     </p>
 
-    <table class="table" formArrayName="exercises">
+    <table *ngIf="this.wod" class="table" formArrayName="exercises">
       <tr>
         <th colspan="2">Add exercise:</th>
         <th width="150px"><button type="button" (click)="addExercise()" class="btn btn-primary">Add exercise</button></th>

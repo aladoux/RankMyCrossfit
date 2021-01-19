@@ -97,6 +97,8 @@ module.exports.update = (req, res) => {
         }
         else{
             recordWod.record = req.body.record;
+            recordWod.date = req.body.date;
+            recordWod.state = req.body.state;
             recordWod.save().then(recordWod => {
                 res.json('Update done');
             }).catch(err => {
