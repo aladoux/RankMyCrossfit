@@ -23,6 +23,12 @@
             </div>
           </div>
         </div>
+        <div class="table-footer">
+          <div class="header__item">
+            <button style="background-color: #28a745;
+            border-color: #28a745;" *ngIf="this.token" id="addRecord" class="btn btn-light" (click)="openDialog(this.id, this.wod.name)">Add record </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -55,11 +61,6 @@
               </div>
             </div>
           </div>
-          <div class="table-footer">
-            <div class="header__item">
-              <button *ngIf="this.token" id="addRecord" class="btn btn-light" (click)="openDialog(this.id, this.wod.name)">Add record </button>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -89,11 +90,6 @@
                 <label>{{record.record}}</label>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="table-footer">
-          <div class="header__item">
-            <button *ngIf="this.token" id="addRecord" class="btn btn-light" (click)="openDialog(this.id, this.wod.name)">Add record </button>
           </div>
         </div>
       </div>
