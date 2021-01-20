@@ -21,7 +21,6 @@ user;
       this.userService.getUserProfile().subscribe(
         res =>{
           this.user = res['user'];
-          console.log(this.user);
         },
         err =>{}
       );

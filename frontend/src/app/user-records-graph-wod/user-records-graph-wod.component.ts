@@ -41,8 +41,7 @@ export class UserRecordsGraphWodComponent implements OnInit {
   public barChartType = 'line';
   public recordLegend = true;
   public recordData = [
-    {data: this.data, label:'Your performance'},
-    //{data: [56,67,78,89,45,34], label:'Series B'}
+    {data: this.data, label:'Your performance'}
   ];
 
   ngOnInit(): void {
@@ -73,7 +72,6 @@ export class UserRecordsGraphWodComponent implements OnInit {
       .subscribe((data: Wod) => {
         this.wod = data;
         this.exercises = data.exercises;
-        console.log('Data requested ...');
         this.getData();
       });
   }
@@ -83,8 +81,6 @@ export class UserRecordsGraphWodComponent implements OnInit {
       .getRecordByUserWodId(this.idUser, this.idWod)
       .subscribe((data: RecordWod[]) => {
         this.recordWod = data;
-        console.log('Data requested ...');
-        console.log("dede",this.recordWod);
         this.getData();
       });
   }

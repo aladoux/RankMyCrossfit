@@ -38,8 +38,6 @@ export class ListRecordWodComponent implements OnInit {
       .getRecordWodByUserId(this.userId)
       .subscribe((data: RecordWod[]) => {
         this.recordWod = data;
-        console.log('Data requested ...');
-        console.log(this.recordWod);
       });
   }
 

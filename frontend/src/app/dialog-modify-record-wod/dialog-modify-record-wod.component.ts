@@ -20,6 +20,7 @@ export class DialogModifyRecordWodComponent implements OnInit {
   constructor(private routeAc: ActivatedRoute,private router: Router,private userService: UserService,public recordWodService: RecordWodService) { }
 
   ngOnInit(): void {
+
   }
 
   onSubmit(form: NgForm){

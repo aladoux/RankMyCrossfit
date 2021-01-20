@@ -27,8 +27,7 @@ export class UserRecordsGraphComponent implements OnInit {
   public barChartType = 'line';
   public recordLegend = true;
   public recordData = [
-    {data: [], label:'Your performance'},
-    //{data: [56,67,78,89,45,34], label:'Series B'}
+    {data: [], label:'Your performance'}
   ];
 
   weightlifting: Weightlifting;
@@ -58,8 +57,6 @@ export class UserRecordsGraphComponent implements OnInit {
       .getWeightliftingById(this.idWei)
       .subscribe((data: Weightlifting) => {
         this.weightlifting = data;
-        console.log('Data requested ...');
-        console.log(this.weightlifting);
       });
   }
 
@@ -68,8 +65,6 @@ export class UserRecordsGraphComponent implements OnInit {
       .getRecordWeiByUserWeiId(this.idUser, this.idWei)
       .subscribe((data: RecordWei[]) => {
         this.recordWei = data;
-        console.log('Data requested ...');
-        console.log("dede",this.recordWei);
         this.getData();
       });
   }

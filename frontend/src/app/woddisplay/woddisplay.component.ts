@@ -37,7 +37,6 @@ export class WodDisplayComponent implements OnInit {
     });
    this.fetchWod();
    this.fetchRecordWodManPublic();
-   console.log("coco",this.records);
    this.token = this.userService.getToken();
   }
 
@@ -47,7 +46,6 @@ export class WodDisplayComponent implements OnInit {
       .subscribe((data: Wod) => {
         this.wod = data;
         this.exercises = data.exercises;
-        console.log('Data requested ...');
       });
   }
 
@@ -56,7 +54,6 @@ export class WodDisplayComponent implements OnInit {
       .getRecordManPublic(this.id)
       .subscribe((data: RecordWod[]) => {
         this.recordsMen = data;
-        console.log('Data requested ...');
       });
   }
 
@@ -65,7 +62,6 @@ export class WodDisplayComponent implements OnInit {
       .getRecordWomanPublic(this.id)
       .subscribe((data: RecordWod[]) => {
         this.recordsWomen = data;
-        console.log('Data requested ...');
       });
   }
 
@@ -73,6 +69,11 @@ export class WodDisplayComponent implements OnInit {
     let dialo = this.dialog.open(DialogRecordWodComponent);
     dialo.componentInstance.idWod = id;
     dialo.componentInstance.name = name;
+    dialo.afterClosed().subscribe(() => {
+      this.fetchRecordWodWomanPublic();
+      this.fetchRecordWodManPublic();
+      window.location.reload();
+    });
   }
 
   openDialogExo(exo): void {

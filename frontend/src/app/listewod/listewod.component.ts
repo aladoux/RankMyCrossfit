@@ -29,7 +29,6 @@ export class ListewodComponent implements OnInit {
     this.userService.getUserProfile().subscribe(
       res =>{
         this.user = res['user'];
-        console.log(this.user);
       },
       err =>{}
     );
@@ -40,8 +39,6 @@ export class ListewodComponent implements OnInit {
       .getWods()
       .subscribe((data: Wod[]) => {
         this.wods = data;
-        console.log('Data requested ...');
-        console.log(this.wods);
       });
   }
 

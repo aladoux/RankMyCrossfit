@@ -66,12 +66,10 @@ fetchWeightliftings(){
     .getWeightliftings()
     .subscribe((data: Weightlifting[]) => {
       this.weightliftings = data;
-      //console.log(this.weightliftings);
       for(let i=0;i<this.weightliftings.length;i++){
         const exercice : ExerciceApi = {name: this.weightliftings[i].name, desc: this.weightliftings[i].desc};
         this.exercices.push(exercice);
       }
-      //console.log(this.exercices);
     });
 }
 
@@ -80,12 +78,10 @@ fetchExoApi(){
     this.exoApi = JSON.stringify(res);
     const exoApiParse = JSON.parse(this.exoApi);
     const exoApiResults = exoApiParse.results;
-    //console.log(exoApiResults);
     for(let i=0;i<exoApiResults.length;i++){
       const exercice : ExerciceApi = {name: exoApiResults[i].name, desc: exoApiResults[i].description};
       this.exercices.push(exercice);
     }
-    //console.log(this.exercices);
   });
 
 }
@@ -96,14 +92,10 @@ fetchWod(){
       .subscribe((data: Wod) => {
         this.wod = data;
         this.exos = data.exercises;
-        //console.log("dede",this.exos);
         for(let ex of this.exos){
           const exo : ExerciceApi = {name: ex.objectExo.name, desc: ex.objectExo.desc};
           this.exercises().push(this.existExercise(JSON.stringify(exo), ex.quantity,ex.listeUnit,ex.weight));
-          console.log("dede",typeof exo);
         }
-        console.log("dede",typeof this.exercices[0]);
-        //console.log("coucou",this.exercices);
       });
   }
 
@@ -140,6 +132,5 @@ fetchWod(){
     this.wodService.updateWod(this.id,this.productForm.value.name, this.productForm.value.exercises).subscribe(() => {
       this.route.navigate(['/wods']);
     });
-    //console.log(this.productForm.value);
   }
 }

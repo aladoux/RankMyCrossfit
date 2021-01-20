@@ -26,7 +26,6 @@ export class DialogModifyRecordWeiComponent implements OnInit {
 
 
   onSubmit(form: NgForm){
-    console.log(form.value);
     this.recordWeiService.updateRecordWei(this.recordWei._id,form.value.record,form.value.state,form.value.date).subscribe(
       res => {
         this.formisvalid = true;

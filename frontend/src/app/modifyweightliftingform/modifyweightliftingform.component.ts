@@ -47,8 +47,6 @@ onBack(){
       .getWeightliftingById(this.id)
       .subscribe((data: Weightlifting) => {
         this.weightlifting = data;
-        console.log('Data requested ...');
-        console.log(this.weightlifting);
       });
   }
 

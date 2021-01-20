@@ -27,7 +27,6 @@ export class UserProfileComponent implements OnInit {
     this.userService.getUserProfile().subscribe(
       res =>{
         this.userDetails = res['user'];
-        console.log(this.userDetails);
       },
       err =>{}
     );
@@ -38,8 +37,6 @@ export class UserProfileComponent implements OnInit {
       .getWods()
       .subscribe((data: Wod[]) => {
         this.wods = data;
-        console.log('Data requested ...');
-        console.log(this.wods);
       });
   }
 
@@ -48,8 +45,6 @@ export class UserProfileComponent implements OnInit {
       .getWeightliftings()
       .subscribe((data: Weightlifting[]) => {
         this.weightliftings = data;
-        console.log('Data requested ...');
-        console.log(this.weightliftings);
       });
   }
 

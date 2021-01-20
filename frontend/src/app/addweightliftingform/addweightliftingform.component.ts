@@ -34,6 +34,5 @@ export class AddWeightliftingFormComponent implements OnInit{
     this.weightliftingService.addWeightlifting(this.productForm.value.name, this.productForm.value.desc).subscribe(() => {
       this.router.navigate(['/weightliftings']);
     });
-    console.log(this.productForm.value);
   }
 }

@@ -38,8 +38,6 @@ userId;
       .getRecordWeiByUserId(this.userId)
       .subscribe((data: RecordWei[]) => {
         this.recordWei = data;
-        console.log('Data requested ...');
-        console.log(this.recordWei);
       });
   }
 

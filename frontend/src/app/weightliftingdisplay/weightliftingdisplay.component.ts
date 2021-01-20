@@ -36,7 +36,6 @@ export class WeightliftingDisplayComponent implements OnInit {
    this.fetchRecordWeiManPublic();
    this.fetchRecordWeiWomanPublic();
    this.token = this.userService.getToken();
-   console.log("dede", this.recordsMen);
   }
 
   fetchWeightlifting(){
@@ -44,8 +43,6 @@ export class WeightliftingDisplayComponent implements OnInit {
       .getWeightliftingById(this.id)
       .subscribe((data: Weightlifting) => {
         this.weightlifting = data;
-        console.log('Data requested ...');
-        console.log(this.weightlifting);
       });
   }
 
@@ -54,7 +51,6 @@ export class WeightliftingDisplayComponent implements OnInit {
       .getRecordManPublic(this.id)
       .subscribe((data: RecordWei[]) => {
         this.recordsMen = data;
-        console.log('Data requested ...');
       });
   }
 
@@ -71,6 +67,11 @@ export class WeightliftingDisplayComponent implements OnInit {
     let dialo = this.dialog.open(DialogRecordWeiComponent);
     dialo.componentInstance.idWei = id;
     dialo.componentInstance.name = name;
+    dialo.afterClosed().subscribe(() => {
+      this.fetchRecordWeiWomanPublic();
+      this.fetchRecordWeiManPublic();
+      window.location.reload();
+    });
   }
 
 }

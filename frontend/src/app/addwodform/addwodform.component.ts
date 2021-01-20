@@ -51,12 +51,10 @@ export class AddWodFormComponent implements OnInit{
       .getWeightliftings()
       .subscribe((data: Weightlifting[]) => {
         this.weightliftings = data;
-        //console.log(this.weightliftings);
         for(let i=0;i<this.weightliftings.length;i++){
           const exercice : ExerciceApi = {name: this.weightliftings[i].name, desc: this.weightliftings[i].desc};
           this.exercices.push(exercice);
         }
-        //console.log(this.exercices);
       });
   }
 
@@ -65,12 +63,10 @@ export class AddWodFormComponent implements OnInit{
       this.exoApi = JSON.stringify(res);
       const exoApiParse = JSON.parse(this.exoApi);
       const exoApiResults = exoApiParse.results;
-      //console.log(exoApiResults);
       for(let i=0;i<exoApiResults.length;i++){
         const exercice : ExerciceApi = {name: exoApiResults[i].name, desc: exoApiResults[i].description};
         this.exercices.push(exercice);
       }
-      //console.log(this.exercices);
     });
 
   }
@@ -98,7 +94,6 @@ export class AddWodFormComponent implements OnInit{
     for(let exo of (this.productForm.value.exercises)){
       exo.objectExo = JSON.parse(exo.objectExo);
     }
-    //this.productForm.value.exercises[0].objectExo = JSON.parse((this.productForm.value.exercises[0].objectExo).objectExo);
     this.wodService.addWod(this.productForm.value.name, this.productForm.value.exercises).subscribe(() => {
       this.router.navigate(['/wods']);
     });

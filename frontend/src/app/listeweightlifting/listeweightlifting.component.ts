@@ -27,7 +27,6 @@ export class ListeweightliftingComponent implements OnInit {
     this.userService.getUserProfile().subscribe(
       res =>{
         this.user = res['user'];
-        console.log(this.user);
       },
       err =>{}
     );
@@ -38,8 +37,6 @@ export class ListeweightliftingComponent implements OnInit {
       .getWeightliftings()
       .subscribe((data: Weightlifting[]) => {
         this.weightliftings = data;
-        console.log('Data requested ...');
-        console.log(this.weightliftings);
       });
   }
 
