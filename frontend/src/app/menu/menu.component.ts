@@ -17,7 +17,6 @@ user;
   @Input() username: string;
   ngOnInit(): void {
     this.token = this.userService.getToken();
-    console.log("dede", this.token);
     if(this.token){
       this.userService.getUserProfile().subscribe(
         res =>{

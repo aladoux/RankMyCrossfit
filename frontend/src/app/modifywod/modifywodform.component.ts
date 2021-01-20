@@ -42,7 +42,7 @@ ngOnInit(): void {
     });
     this.fetchWeightliftings();
     this.fetchExoApi();
-    console.log(this.wod);
+
 
 }
 
@@ -99,12 +99,12 @@ fetchWod(){
         //console.log("dede",this.exos);
         for(let ex of this.exos){
           const exo : ExerciceApi = {name: ex.objectExo.name, desc: ex.objectExo.desc};
-          //this.productForm.value.exercises.objectExo.setValue();
-          this.exercises().push(this.existExercise(exo, ex.quantity,ex.listeUnit,ex.weight));
+          this.exercises().push(this.existExercise(JSON.stringify(exo), ex.quantity,ex.listeUnit,ex.weight));
+          console.log("dede",typeof exo);
         }
+        console.log("dede",typeof this.exercices[0]);
         //console.log("coucou",this.exercices);
       });
-
   }
 
   existExercise(objectExo, quantity, unit, wei): FormGroup {
