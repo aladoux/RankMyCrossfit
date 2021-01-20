@@ -1,105 +1,103 @@
-<div class="container">
+<div class="container text-center">
+  <h1 *ngIf="this.wod">{{wod.name}}</h1>
+  <div class="row justify-content-md-center">
+    <div class="col-md-8">
+      <div class="table-fill table">
+        <div class="table-header">
+          <div class="table-data filter__link header__item"><h2>Name</h2></div>
+          <div class="table-data filter__link header__item"><h2>Duration/Cal</h2></div>
+          <div class="table-data filter__link header__item"><h2>Weight</h2></div>
+        </div>
+        <div class="table-content">
+          <div *ngFor="let exo of this.exercises;">
+            <div class="table-row">
+              <div class="table-data">
+                <button class="btn table-data" (click)="openDialogExo(exo.objectExo)" style="font-size: 12px;">{{exo.objectExo.name }}</button>
+              </div>
+              <div class="table-data">
+                <label> {{exo.quantity}} {{exo.listeUnit}}</label>
+              </div>
+              <div class="table-data">
+                <label> {{exo.weight}} kg</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="table-footer">
+          <div class="header__item">
+            <button *ngIf="this.token" id="addRecord" class="btn btn-light" (click)="openDialog(this.id, this.wod.name)">Add record </button>
+          </div>
+          
 
-<h1 *ngIf="this.wod">{{wod.name}}</h1>
-<br>
-<table id="tab" class="table">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Unity</th>
-      <th scope="col">Weight</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let exo of this.exercises;">
-      <td>
-        <button class="btn" (click)="openDialogExo(exo.objectExo)">{{exo.objectExo.name }}</button>
-      </td>
-      <td>
-        <label> {{exo.quantity}}</label>
-      </td>
-      <td>
-        <label> {{exo.listeUnit}}</label>
-      </td>
-      <td>
-        <label> {{exo.weight}}</label>
-      </td>
-      <td>
-        <label>kg</label>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<div class="d-flex justify-content-center align-items-center">
-  <button *ngIf="this.token" id="addRecord" class="btn btn-success" (click)="openDialog(this.id, this.wod.name)">Add record </button>
-</div>
-
-<div class="row no-gutters">
-  <div class="col-md-6 no-gutters">
-    <div class="leftside d-flex justify-content-center align-items-center">
-          <h2>Men Records</h2>
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col"> Rank</th>
-                <th scope="col"> User</th>
-                <th scope="col"> Date </th>
-                <th scope="col"> Record </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let record of this.recordsMen;">
-                <td>
-                  <label>{{recordsMen.indexOf(record)+1}} </label>
-                </td>
-                <td>
-                  <label> {{record.nameUs}}</label>
-                </td>
-                <td>
-                  <label> {{record.date}}</label>
-                </td>
-                <td>
-                  <label> {{record.record}}</label>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="col-md-6 no-gutters">
-    <div class="rightside d-flex justify-content-center align-items-center">
-      <h2>Women Records</h2>
-      <br>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col"> Rank</th>
-            <th scope="col"> User</th>
-            <th scope="col"> Date </th>
-            <th scope="col"> Record </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let record of this.recordsWomen;">
-            <td>
-              <label>{{recordsMen.indexOf(record)+1}} </label>
-            </td>
-            <td>
-              <label> {{record.nameUs}}</label>
-            </td>
-            <td>
-              <label> {{record.date}}</label>
-            </td>
-            <td>
-              <label> {{record.record}}</label>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+
+
+  <div class="row justify-content-md-center d-flex" style="padding-bottom: 150px;">
+    <div class="col-md-6">
+      <h1>Men Records</h1>
+      <div class="table-fill table">
+        <div class="table-header">
+          <div class="table-data filter__link header__item"><h2>Rank</h2></div>
+          <div class="table-data filter__link header__item"><h2>User</h2></div>
+          <div class="table-data filter__link header__item"><h2>Date</h2></div>
+          <div class="table-data filter__link header__item"><h2>Record</h2></div>
+        </div>
+        <div class="table-content">
+          <div *ngFor="let record of this.recordsMen;">
+            <div class="table-row">
+              <div class="table-data">
+                <label>{{recordsMen.indexOf(record)+1}}</label>
+              </div>
+              <div class="table-data">
+                <label>{{record.nameUs}}</label>
+              </div>
+              <div class="table-data">
+                <label>{{record.date}}</label>
+              </div>
+              <div class="table-data">
+                <label>{{record.record}}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <div class="col-md-6">
+      <h1>Women Records</h1>
+      <div class="table-fill table">
+        <div class="table-header">
+          <div class="table-data filter__link header__item"><h2>Rank</h2></div>
+          <div class="table-data filter__link header__item"><h2>User</h2></div>
+          <div class="table-data filter__link header__item"><h2>Date</h2></div>
+          <div class="table-data filter__link header__item"><h2>Record</h2></div>
+        </div>
+        <div class="table-content">
+          <div *ngFor="let record of this.recordsWomen;">
+            <div class="table-row">
+              <div class="table-data">
+                <label>{{recordsMen.indexOf(record)+1}}</label>
+              </div>
+              <div class="table-data">
+                <label>{{record.nameUs}}</label>
+              </div>
+              <div class="table-data">
+                <label>{{record.date}}</label>
+              </div>
+              <div class="table-data">
+                <label>{{record.record}}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+
+  </div>
+
+
 
 </div>
