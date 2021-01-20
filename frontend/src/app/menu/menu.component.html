@@ -19,6 +19,5 @@
     </li>
   </ul>
   <a *ngIf="!this.token" class="btn btn-light d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" id="compteBouton" routerLink="login" title="Log in">Login</a>
-  <!--<a *ngIf="!this.token" class="btn btn-light d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" id="signupButton" routerLink="/signup" title="Sign up">S'inscrire</a>-->
   <a *ngIf="this.token && this.user" class="btn btn-light d-none d-lg-inline-block mb-3 mb-md-0 ml-md-3" id="compteBouton" routerLink="login" title="Log in">{{this.user.username}}</a>
 </nav>

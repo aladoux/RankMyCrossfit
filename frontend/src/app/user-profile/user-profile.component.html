@@ -6,14 +6,18 @@
         <div class="table-header">
           <div class="header__item"><a id="name" class="filter__link" href="#"><h1>User Profile</h1></a></div>
         </div>
-        <div class="table-content">	
-          <div class="table-row">		
+        <div class="table-content">
+          <div class="table-row">
             <div class="table-data">First Name</div>
             <div class="table-data">{{userDetails.firstName}}</div>
           </div>
           <div class="table-row">
             <div class="table-data">Last Name</div>
             <div class="table-data">{{userDetails.lastName}}</div>
+          </div>
+          <div class="table-row">
+            <div class="table-data">Username</div>
+            <div class="table-data">{{userDetails.username}}</div>
           </div>
           <div class="table-row">
             <div class="table-data">Email</div>
@@ -27,7 +31,7 @@
             <div class="table-data">Nationnality</div>
             <div class="table-data">{{userDetails.nation}}</div>
           </div>
-        </div>	
+        </div>
         <div class="table-footer">
           <div class="header__item"><a id="name" class="filter__link" href="#"><input class="btn btn-light btn-lg" type="button" (click)="onLogout()" value="Logout" /></a></div>
         </div>
@@ -62,7 +66,7 @@
             <button class="btn btn-danger btn-lg" *ngIf="this.userDetails" [routerLink]="['/myRecordsWod',userDetails._id ]">Get all wod's records</button>
           </div>
         </div>
-        
+
         <div class="col-md-6">
           <div class="table-data" style="padding-top: 7px; padding-bottom: 7px;">
             <h2>Weightliftings</h2>
