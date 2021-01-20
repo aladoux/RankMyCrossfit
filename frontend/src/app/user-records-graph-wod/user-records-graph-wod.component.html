@@ -31,24 +31,66 @@
   </table>
 
   <div class="d-flex justify-content-center align-items-center">
-    <button *ngIf="this.token" id="addRecord" class="btn btn-success" (click)="openDialog(this.idWod, this.wod.name)">Add record </button>
+    <button style="background-color: #28a745;
+    border-color: #28a745;" *ngIf="this.token" id="addRecord" class="btn btn-success" (click)="openDialog(this.idWod, this.wod.name)">Add record </button>
   </div>
 
   <br>
-  <h2 *ngIf="this.wod">My records for {{wod.name}}</h2>
-  <div class="content" role="main">
-    <div class="card">
-      <ul class="list-group list-group-flush">
-        <!-- results of ngFor is passed to appFilter with argument searchText -->
-        <td class="list-group-item" *ngFor="let record of recordWod">
-          <label style="margin-right:10px"> {{record.name}}</label>
-          <label style="margin-right:10px"> {{record.record}} min </label>
-          <label style="margin-right:10px"> {{record.date}} </label>
-          <label style="margin-right:10px">{{record.state}}</label>
-          <button class="btn btn-warning" (click)="openDialogMod(record)">Modify</button>
-          <button class="btn btn-danger" (click)="deleteRecordWod(record._id)" >Delete</button>
-        </td>
-      </ul>
+
+  <div class="row justify-content-md-center">
+    <div class="col-md-12 text-center" >
+      <div class="table-header" style="padding-top: 7px; padding-bottom: 7px;">
+        <h1 *ngIf="this.wod" style="color:white; margin: auto; text-align: center;">My records for {{wod.name}}</h1>
+      </div>
+      <div class="table-row"  >
+        <div class="table-data">
+          <label>Name</label>
+        </div>
+        <div class="table-data">
+          <label>Record</label>
+        </div>
+        <div class="table-data">
+          <label>Date</label>
+        </div>
+        <div class="table-data">
+          <label>State</label>
+        </div>
+        <div class="table-data">
+          <label></label>
+        </div>
+        <div class="table-data">
+          <label></label>
+        </div>
+      </div>
+      <div class="content text-center" role="main">
+          <div class="form-group">
+          </div>
+            <!-- results of ngFor is passed to appFilter with argument searchText -->
+            <div class="table-content">
+              <div *ngFor="let record of recordWod">
+                <div class="table-row">
+                <div class="table-data">
+                  <label> {{record.name}}</label>
+                </div>
+                <div class="table-data">
+                  <label>{{record.record}} min</label>
+                </div>
+                <div class="table-data">
+                  <label>{{record.date | date:'yyyy-MM-dd'}}</label>
+                </div>
+                <div class="table-data">
+                  <label>{{record.state}}</label>
+                </div>
+                <div class="table-data">
+                  <button class="btn btn-warning" style="width:100%; font-size: 15px; float: right;" (click)="openDialog(record)">Modify</button>
+                </div>
+                <div class="table-data">
+                  <button class="btn btn-danger" style="width:100%;  font-size: 15px; float: right;" (click)="deleteRecordWod(record._id)" >Delete</button>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
     </div>
   </div>
 
