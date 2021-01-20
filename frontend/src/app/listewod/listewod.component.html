@@ -1,23 +1,30 @@
 <div class="container">
-  <h1>Wod</h1>
-  <button *ngIf="this.token && this.user && this.user.email=='admin@gmail.com'" class="btn btn-success" routerLink='/wods/add'>Add</button>
-  <br><br>
-  <br>
-  <div class="content" role="main">
-    <div class="card">
-      <div class="form-group">
-        <label for="search-text">Search Text</label>
-        <input type="search" class="form-control" id="search-text" aria-describedby="search-text"
-          [(ngModel)]="wodname" placeholder="Enter a wod's name" (input)="Search()" autofocus/>
+
+  <div class="row justify-content-md-center">
+    <div class="col-md-9">
+      <div class="table-data" style="padding-top: 7px; padding-bottom: 7px;">
+        <h1>Wods</h1>
       </div>
-      <ul class="list-group list-group-flush">
-        <!-- results of ngFor is passed to appFilter with argument searchText -->
-        <td class="list-group-item" *ngFor="let wod of wods">
-          <button class="btn" [routerLink]="['/wods',wod._id]">{{wod.name}}</button>
-          <button *ngIf="this.token && this.user && this.user.email=='admin@gmail.com'" class="btn btn-warning" [routerLink]="['/wods/modify/',wod._id]">Modify</button>
-          <button  *ngIf="this.token && this.user && this.user.email=='admin@gmail.com'" class="btn btn-danger" (click)="deleteWod(wod._id)">Delete</button>
-        </td>
-      </ul>
+      <div class="content text-center" role="main">
+        <div class="card">
+          <div class="form-group">
+            <input style="width:100%; font-size: 15px;" type="search" class="form-control" id="search-text" aria-describedby="search-text"
+            [(ngModel)]="wodname" placeholder="Enter a wod's name" (input)="Search()" autofocus/>
+          </div>
+          <ul class="list-group list-group-flush">
+            <!-- results of ngFor is passed to appFilter with argument searchText -->
+            <td class="list-group-item" *ngFor="let wod of wods">
+              <button class="btn btn-lg" style="font-size: 15px;" [routerLink]="['/wods',wod._id]">{{wod.name}}</button>
+              <button style="width:33%; font-size: 15px; float: right;" *ngIf="this.token && this.user && this.user.email=='admin@gmail.com'" class="btn btn-warning" [routerLink]="['/wods/modify/',wod._id]">Modify</button>
+              <button style="width:33%; font-size: 15px; float: right;" *ngIf="this.token && this.user && this.user.email=='admin@gmail.com'" class="btn btn-danger" (click)="deleteWod(wod._id)">Delete</button>
+            </td>
+          </ul>
+        </div>
+      </div>
+      <div class="table-footer">
+        <div class="header__item"> <button *ngIf="this.token && this.user && this.user.email=='admin@gmail.com'" class="btn btn-succes btn-lg filter__link" routerLink='/wods/add'>Add</button></div>
+      </div>
     </div>
   </div>
+
 </div>
