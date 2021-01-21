@@ -27,7 +27,7 @@ export class RecordWodService {
   }
 
   getRecordWomanPublic(id){
-    return this.http.get(`${this.uri}/recordWod/publicwoman/${id}`)
+    return this.http.get(`${this.uri}/recordWod/publicwoman/${id}`);
   }
 
   getRecordManPublic(id) {

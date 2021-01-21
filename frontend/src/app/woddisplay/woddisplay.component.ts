@@ -37,6 +37,7 @@ export class WodDisplayComponent implements OnInit {
     });
    this.fetchWod();
    this.fetchRecordWodManPublic();
+   this.fetchRecordWodWomanPublic();
    this.token = this.userService.getToken();
   }
 
